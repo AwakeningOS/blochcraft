@@ -10,4 +10,5 @@
 | BC-06 | Separate-window intent-driven Quest prototype | abandoned | User explicitly rejected and requested full deletion | Removed from active app |
 | BC-07 | Lab-first bottom purpose paths and common Quest window | abandoned | Superseded by user correction | Removed from active app |
 | BC-08 | Calm explanatory copy structure | abandoned | User rejected overall design | Removed from active app |
-| BC-09 | Three-qubit editor command audit | in_progress | `src/circuit.js` and `src/gates.js` inspected | Agree on scope before implementation |
+| BC-09 | Three-qubit editor command audit | done_verified | `src/circuit.js` and `src/gates.js` inspected | Existing set was partial |
+| BC-10 | Complex amplitudes and standard single-qubit gates | done_verified | 5/5 tests; automated browser H/S/RX(35°) | Includes measurement, relationship, codegen propagation |

@@ -1,11 +1,12 @@
 import { DEG, project, vec } from "./math3d.js";
+import { reducedSummary } from "./circuit.js";
 
-const MASK=[4,2,1],NAMES=["A","B","C"],COLORS=["#d9a900","#ef233c","#9b4f00"];
+const NAMES=["A","B","C"],COLORS=["#d9a900","#ef233c","#9b4f00"];
 const camera={yaw:25*DEG,pitch:-8*DEG};
 let lastState=null,lastTargets=null,lastHistory=null,drag=null,installed=false;
 
 export function relationshipMetrics(state){
-  return NAMES.map((name,q)=>{const mask=MASK[q];let p0=0,p1=0,cross=0;for(let i=0;i<8;i++)if(!(i&mask)){const a=state[i],b=state[i|mask];p0+=a*a;p1+=b*b;cross+=a*b}const x=2*cross,z=p0-p1,visible=Math.min(1,Math.hypot(x,z)),vault=Math.sqrt(Math.max(0,1-visible*visible));return{name,p0,p1,x,y:0,z,visible,vault,color:COLORS[q]}});
+  return NAMES.map((name,q)=>{const {p0,p1,x,y,z,length}=reducedSummary(state,q),visible=Math.min(1,length),vault=Math.sqrt(Math.max(0,1-visible*visible));return{name,p0,p1,x,y,z,visible,vault,color:COLORS[q]}});
 }
 
 const opposite=v=>vec(-v.x,-v.y,-v.z);
@@ -23,7 +24,7 @@ function sphere(metric,cx,cy,r,index,history){
   const dirs=[["北 |0⟩",vec(0,0,1),"#2a78d6"],["南 |1⟩",vec(0,0,-1),"#d1495b"],["東 |+⟩",vec(1,0,0),"#1baf7a"],["西 |−⟩",vec(-1,0,0),"#c98500"],["表 |+i⟩",vec(0,1,0),"#d43791"],["裏 |−i⟩",vec(0,-1,0),"#008ca8"]];
   for(const[label,v,color]of dirs){const p=project(v,cx,cy,r,camera.yaw,camera.pitch);let dx=p.x-cx,dy=p.y-cy,l=Math.hypot(dx,dy);if(l<1){dx=label.startsWith("表")?1:-1;dy=.3;l=Math.hypot(dx,dy)}const t={x:cx+(r+27)*dx/l,y:cy+(r+27)*dy/l};s+=`<circle cx="${p.x}" cy="${p.y}" r="2.8" fill="${color}"/>${line(p,t,color,.7,.5)}<text x="${t.x}" y="${t.y+4}" text-anchor="middle" font-size="9.5" font-weight="700" fill="${color}">${label}</text>`}
   s+=historyTrail(history,index,cx,cy,r,metric.color);
-  if(metric.visible>.005){const unit=metric.visible?vec(metric.x/metric.visible,0,metric.z/metric.visible):vec(0,0,1),tip=project(unit,cx,cy,r*metric.visible,camera.yaw,camera.pitch);s+=arrow(cx,cy,tip);s+=`<circle cx="${tip.x+2}" cy="${tip.y+3}" r="8" fill="#26384b" opacity=".18"/><circle cx="${tip.x}" cy="${tip.y}" r="7" fill="url(#rel-tip)" stroke="#fff" stroke-width=".8"/>`}
+  if(metric.visible>.005){const unit=metric.visible?vec(metric.x/metric.visible,metric.y/metric.visible,metric.z/metric.visible):vec(0,0,1),tip=project(unit,cx,cy,r*metric.visible,camera.yaw,camera.pitch);s+=arrow(cx,cy,tip);s+=`<circle cx="${tip.x+2}" cy="${tip.y+3}" r="8" fill="#26384b" opacity=".18"/><circle cx="${tip.x}" cy="${tip.y}" r="7" fill="url(#rel-tip)" stroke="#fff" stroke-width=".8"/>`}
   else s+=`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="var(--text)" stroke-width="1.5"/>`;
   s+=`<text x="${cx}" y="28" text-anchor="middle" font-size="22" font-weight="800" fill="${metric.color}">${metric.name}</text>`;
   const w=200*metric.vault;s+=`<rect x="${cx-110}" y="318" width="220" height="70" rx="11" fill="var(--panel)" stroke="#9aa5ae"/><text x="${cx}" y="341" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">${metric.name} 対 残り全体の関係金庫</text><line x1="${cx-100}" y1="361" x2="${cx+100}" y2="361" stroke="#7b8791" stroke-width="9" stroke-linecap="round" opacity=".18"/><line x1="${cx-w/2}" y1="361" x2="${cx+w/2}" y2="361" stroke="${metric.color}" stroke-width="9" stroke-linecap="round"/><text x="${cx}" y="382" text-anchor="middle" font-size="12" font-weight="800" fill="${metric.color}">${(metric.vault*100).toFixed(1)}%</text>`;

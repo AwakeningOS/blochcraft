@@ -7,7 +7,8 @@ editor substantially more complete.
 
 ## Current Task
 
-Delete all Quest functionality and audit the circuit editor's command set.
+Complete and verify the first circuit-editor expansion: complex amplitudes and
+standard single-qubit gates.
 
 ## Hard Constraints
 
@@ -58,8 +59,12 @@ Delete all Quest functionality and audit the circuit editor's command set.
   references have been removed from the active app.
 - Repository-wide active-app search found no remaining Quest/purpose UI references.
 - Remaining non-Quest test suite passes 5/5 and `git diff --check` is clean.
-- Current editor commands are limited to RY(30/60/90/-90), X, Z, H, six CNOT
-  directions, Toffoli A/B->C, delete, and clear-all.
+- State vectors now use complex amplitudes throughout circuit simulation,
+  relationship metrics, arbitrary-basis measurement, and display.
+- Editor now provides X/Y/Z/H/S/S†/T/T† and angle-input RX/RY/RZ while
+  preserving six CNOT directions and Toffoli.
+- Browser automation verified 20 commands, RX(35°) placement, complex
+  amplitude display, Bloch Y component, and matching Qiskit output.
 
 ## Current Blockers
 
@@ -67,9 +72,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the verified Quest deletion.
-2. Present an exact command-gap audit to the user.
-3. Expand the editor only after agreeing on command categories and interaction design.
+1. Run final expanded numerical tests and browser smoke validation.
+2. Commit and push the complex single-qubit gate expansion.
+3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated
 

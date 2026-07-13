@@ -20,5 +20,8 @@
 .measurement-row small { grid-column:1/-1; color:var(--muted); font-size:10px; }
 .sample-empty { padding:18px; color:var(--muted); background:#6c7b8b12; border-radius:9px; }
 .code-panel { margin:15px 0 0; padding:18px; overflow:auto; border-radius:12px; background:#111a24; color:#d9e7f2; line-height:1.55; font-size:13px; }
+.angle-control { display:inline-flex; align-items:center; gap:5px; margin-left:auto; color:var(--text); font-size:13px; font-weight:800; }
+.angle-control input { width:78px; padding:6px 8px; border:1px solid var(--border); border-radius:7px; background:var(--panel); color:var(--text); }
+.state-row .amplitude { grid-column:2/4; color:var(--muted); font-size:10px; }
 @media(max-width:700px) { .measurement-bases,.measurement-results { grid-template-columns:1fr; } .learning-shell { margin-inline:12px; } }
 @media(prefers-color-scheme:dark) { .condition-help,.tool-meaning { background:#252c33 !important; color:#eef2f5 !important; border-color:#46515b !important; border-left-color:#e28a43 !important; }.tool-meaning strong,.condition-help strong { color:#f3f6f8 !important; }.tool-meaning span { color:#bdc6ce !important; } }

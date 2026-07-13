@@ -1,0 +1,10 @@
+export const complex = (re = 0, im = 0) => ({ re, im });
+export const asComplex = (value) => typeof value === "number" ? complex(value, 0) : value;
+export const add = (a, b) => { a=asComplex(a);b=asComplex(b);return complex(a.re+b.re,a.im+b.im) };
+export const sub = (a, b) => { a=asComplex(a);b=asComplex(b);return complex(a.re-b.re,a.im-b.im) };
+export const mul = (a, b) => { a=asComplex(a);b=asComplex(b);return complex(a.re*b.re-a.im*b.im,a.re*b.im+a.im*b.re) };
+export const scale = (value, factor) => { value=asComplex(value);return complex(value.re*factor,value.im*factor) };
+export const conj = (value) => { value=asComplex(value);return complex(value.re,-value.im) };
+export const abs2 = (value) => { value=asComplex(value);return value.re*value.re+value.im*value.im };
+export const phase = (angle) => complex(Math.cos(angle),Math.sin(angle));
+export const isNearZero = (value, tolerance=1e-12) => abs2(value)<tolerance*tolerance;

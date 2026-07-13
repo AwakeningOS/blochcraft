@@ -7,7 +7,7 @@ substantially more complete.
 
 ## Current Task
 
-Audit and agree on the circuit editor command set before expanding it.
+Continue expanding the verified complex-amplitude three-qubit editor.
 
 ## Hard Constraints
 
@@ -27,8 +27,12 @@ Audit and agree on the circuit editor command set before expanding it.
 - Initial project checkpoint is commit `c554877`.
 - Remote branch `agent/blochcraft-v0-4` and draft PR #1 are published.
 - User explicitly rejected and deleted the Quest direction.
-- Current editor supports only a partial gate set: RY fixed angles, X, Z, H,
-  all six directed CNOT pairs, one fixed Toffoli, delete, and clear-all.
+- Complex amplitudes are supported throughout simulation, measurement,
+  relationship metrics, and display.
+- Editor supports X/Y/Z/H/S/S†/T/T†, arbitrary-angle RX/RY/RZ, six directed
+  CNOT pairs, one Toffoli, delete, and clear-all.
+- Browser automation verified H/S/RX(35°), complex amplitude display, Bloch Y,
+  and matching Qiskit output.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched
@@ -42,8 +46,8 @@ Validation and GitHub publication are complete. Draft PR #1 targets `main`:
 
 ## Next Actions
 
-1. Verify the deletion and run the remaining tests.
-2. Agree on the editor command categories and first expansion slice.
+1. Push the verified complex gate expansion.
+2. Add CZ/SWAP or editor undo/move/copy based on the user's choice.
 3. Do not restore Quest work unless explicitly requested.
 
 ## Do Not Assume

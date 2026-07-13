@@ -95,3 +95,11 @@
 - Evidence: Repository-wide active-app search returned no Quest/purpose UI references; remaining Node suite passed 5/5; `git diff --check` returned no errors.
 - Files: `index.html`, `src/app.js`, `src/learning.css`, `src/styles.css`, `README.md`, `docs/ROADMAP.md`; deleted Quest source and test files.
 - Result: Active application is again the single BlochCraft Lab with no Quest entry point or runtime code.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Expanded the three-qubit editor to complex amplitudes and standard single-qubit gates.
+- Evidence: Node tests passed for H/CNOT/GHZ, Y and S/S† phases, RX/RY/RZ, +i measurement, relationship Y component, Qiskit generation, and gate normalization. Browser automation placed H, S, RX(35°) and reported 20 commands, complex amplitudes, A Bloch `(X,Y,Z)=(0.00,0.82,0.57)`, and `qc.rx(35 * pi / 180, 0)`.
+- Files: `src/complex.js`, `src/circuit.js`, `src/relationship.js`, `src/measurement.js`, `src/codegen.js`, `src/gates.js`, tests and docs.
+- Result: Standard phase-sensitive single-qubit operations now propagate consistently across simulation, visualization, measurement, and generated code.

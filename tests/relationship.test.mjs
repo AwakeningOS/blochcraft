@@ -15,4 +15,7 @@ state=[Math.SQRT1_2,0,0,0,0,0,0,Math.SQRT1_2];
 metrics=relationshipMetrics(state);
 metrics.forEach((m)=>close(m.vault,1,`GHZ ${m.name} vault`));
 
+state=[{re:Math.SQRT1_2,im:0},0,0,0,{re:0,im:Math.SQRT1_2},0,0,0];
+metrics=relationshipMetrics(state);close(metrics[0].x,0,"+i x");close(metrics[0].y,1,"+i y");close(metrics[0].visible,1,"+i visible");
+
 console.log("relationship tests: OK");
