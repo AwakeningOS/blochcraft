@@ -32,6 +32,21 @@
 .angle-presets { grid-column:1/-1; display:grid; grid-template-columns:repeat(auto-fit,minmax(58px,1fr)); gap:5px; width:100%; min-width:0; }
 .angle-presets button { padding:5px 3px; border-radius:6px; font-size:10px; font-variant-numeric:tabular-nums; }
 .state-row .amplitude { grid-column:2/4; color:var(--muted); font-size:10px; }
+.qubit-a { color:#d9a900 !important; }
+.qubit-b { color:#ef233c !important; }
+.qubit-c { color:#c96b20 !important; }
+#state-table .state-table-header { display:grid; grid-template-columns:64px 1fr 58px; gap:8px; align-items:end; margin:0 0 4px; }
+#state-table .bit-order,#state-table .bit-string { width:64px; display:grid; grid-template-columns:repeat(3,1fr); align-items:center; justify-items:center; }
+#state-table .bit-order { font:800 14px/1.2 Inter,"Noto Sans JP",system-ui,sans-serif; }
+#state-table .state-row { grid-template-columns:64px 1fr 58px; min-height:30px; }
+#state-table .bit-string { font-size:20px; line-height:1; font-weight:900; letter-spacing:0; }
+#state-table .bit-string span { height:auto; overflow:visible; background:transparent; border-radius:0; }
+.measurement-results .state-table-header { display:grid; grid-template-columns:64px 1fr 58px; gap:8px; align-items:end; margin:0 0 4px; }
+.measurement-results .bit-order,.measurement-results .bit-string { width:64px; display:grid; grid-template-columns:repeat(3,1fr); align-items:center; justify-items:center; }
+.measurement-results .bit-order { font:800 14px/1.2 Inter,"Noto Sans JP",system-ui,sans-serif; }
+.measurement-results .measurement-row { grid-template-columns:64px 1fr 58px; min-height:30px; }
+.measurement-results .bit-string { font-size:20px; line-height:1; font-weight:900; letter-spacing:0; }
+.measurement-results .bit-string span { height:auto; overflow:visible; background:transparent; border-radius:0; }
 .column-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#6c7b8b0d; }
 .column-buttons { display:flex; flex-wrap:wrap; gap:6px; }
 #circuit-column-stats { flex:none; color:var(--muted); font-size:12px; font-weight:800; font-variant-numeric:tabular-nums; }

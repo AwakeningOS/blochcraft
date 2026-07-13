@@ -16,6 +16,11 @@ const camera = { yaw: 25 * DEG, pitch: -8 * DEG };
 let circuitGateOverride = null;
 let circuitStartOverride = null;
 
+function setProgress(value) {
+  ui.progress.value = String(value);
+  ui.progress.setAttribute("value", String(value));
+}
+
 function name(gate) { return gateName(gate); }
 function currentGate() { return circuitGateOverride || gates.find((gate) => gate.id === ui.gate.value) || gates[0]; }
 function opposite(v) { return vec(-v.x, -v.y, -v.z); }
@@ -144,14 +149,14 @@ function draw() {
 
 function preset(name) {
   const values = { north:[0,0], south:[180,0], east:[90,0], west:[270,0], front:[0,270], back:[0,90] }[name];
-  circuitStartOverride=null;[ui.y.value, ui.x.value] = values; ui.progress.value = 0; draw();
+  circuitStartOverride=null;[ui.y.value, ui.x.value] = values; setProgress(0); draw();
 }
 
 ui.gate.addEventListener("input",()=>{circuitGateOverride=null;draw()});
 for (const element of [ui.y,ui.x]) element.addEventListener("input",()=>{circuitStartOverride=null;draw()});
 for (const element of [ui.progress,ui.condition]) element.addEventListener("input",draw);
 for (const button of document.querySelectorAll("[data-preset]")) button.addEventListener("click", () => preset(button.dataset.preset));
-$("play").onclick = () => { if (timer) return; if (+ui.progress.value >= 100) ui.progress.value = 0; timer = setInterval(() => { ui.progress.value = Math.min(100, +ui.progress.value + 1); draw(); if (+ui.progress.value >= 100) { clearInterval(timer); timer = null; } }, 25); };
+$("play").onclick = () => { if (timer) return; if (+ui.progress.value >= 100) setProgress(0); timer = setInterval(() => { setProgress(Math.min(100, +ui.progress.value + 1)); draw(); if (+ui.progress.value >= 100) { clearInterval(timer); timer = null; } }, 25); };
 $("stop").onclick = () => { if (timer) clearInterval(timer); timer = null; };
 const resetSingleView = () => { camera.yaw = 25 * DEG; camera.pitch = -8 * DEG; draw(); };
 $("reset-view").onclick = resetSingleView;
@@ -178,7 +183,7 @@ let circuitSnapshot=[],circuitSteps=8,measurementFilters=Array.from({length:3},(
 const refreshCode=()=>{$("qiskit-code").textContent=generateQiskit(circuitSnapshot,circuitSteps,measurementFilters)};
 const measurement=initMeasurement({onFilters(filters){measurementFilters=filters;refreshCode()}});
 initCircuit({
-  onSelect({operation,target=0,startState=null,source}) {
+  onSelect({operation,target=0,startState=null,source,progress=0}) {
     if (!operation) return;
     const axes={rx:"x",x:"x",cx:"x",ccx:"x",ry:"y",y:"y",rz:"z",z:"z",s:"z",sdg:"z",t:"z",tdg:"z",h:"h"};
     const angles={x:180,y:180,z:180,h:180,s:90,sdg:-90,t:45,tdg:-45,cx:180,ccx:180};
@@ -186,7 +191,7 @@ initCircuit({
     const operationTabId=operation.id||operation.kind;
     if(gates.some(gate=>gate.id===operationTabId))ui.gate.value=operationTabId;
     if(source==="circuit"&&startState){const summary=reducedSummary(startState,target);circuitStartOverride=vec(summary.x,summary.y,summary.z)}
-    ui.progress.value = 0;
+    setProgress(progress);
     draw();
   },
   onState(state) {
