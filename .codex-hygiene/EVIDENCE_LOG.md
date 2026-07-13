@@ -119,3 +119,11 @@
 - Evidence: At viewport width 1067, browser geometry reported card client/scroll width both 999, description width 922 and normal one-line height, final preset right edge 1017 within card right edge 1029, and no document horizontal overflow. Node tests passed 5/5.
 - Files: `src/circuit.js`, `src/learning.css`.
 - Result: Rotation description occupies the top row; the full-width slider and wrapping representative angles occupy the second row without leaving the panel.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Connected circuit rotation controls and pre-column state to the upper sphere viewer.
+- Evidence: Browser automation reported editor RY 137° -> viewer rotation 137°; after H(A), placing RY(A,90°) set viewer start outputs to `回路` and position `X 1.000 / Y 0.000 / Z 0.000`; moving the manual start slider to 30° restored numeric manual outputs. Node tests passed 5/5.
+- Files: `src/circuit.js`, `src/app.js`, docs.
+- Result: Gate angle and actual circuit prestate drive the sphere automatically, while manual start-position controls remain available as an explicit override.

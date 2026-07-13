@@ -14,3 +14,4 @@
 | BC-10 | Complex amplitudes and standard single-qubit gates | done_verified | 5/5 tests; automated browser H/S/RX(35°) | Includes measurement, relationship, codegen propagation |
 | BC-11 | Synchronized rotation-angle controls | done_verified | Browser preset/slider/number/RZ/code check; 5/5 tests | −360°..360°, 1° step, 11 presets |
 | BC-12 | Responsive rotation-control layout | done_verified | 1067px geometry: last preset inside card; no horizontal overflow | Fix from user screenshot |
+| BC-13 | Circuit-to-sphere angle and start-state sync | done_verified | Browser RY137°; H->RY prestate east; manual slider restore | Manual start controls retained |

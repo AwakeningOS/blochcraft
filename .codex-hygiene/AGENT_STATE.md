@@ -73,6 +73,13 @@ standard single-qubit gates.
   description text at a 1067 px viewport.
 - Rotation tool layout now uses a two-row grid; browser geometry at 1067 px
   verifies all 11 presets inside the card and no page/card horizontal overflow.
+- Editor rotation angle now drives the upper sphere's axis, trajectory, and
+  endpoint without conflating it with the initial-state controls.
+- Placing/selecting a circuit operation sends its pre-column target-qubit
+  Bloch vector to the sphere as an automatic start position.
+- Touching either manual start slider clears the circuit-derived start state.
+- Browser verified RY 137° sync, H(A)->RY(A) start `(1,0,0)`, and manual
+  slider restoration to 30°.
 
 ## Current Blockers
 
@@ -80,8 +87,8 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the verified responsive angle-control layout.
-2. Let the user inspect the corrected control layout.
+1. Commit and push circuit-to-sphere angle/start-state synchronization.
+2. Let the user inspect the synchronized sphere behavior.
 3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated

@@ -37,6 +37,9 @@ Continue expanding the verified complex-amplitude three-qubit editor.
   representative-angle controls; browser synchronization is verified.
 - Responsive angle layout is verified at 1067 px with no card/page overflow;
   this fixes a user-provided screenshot showing collapsed text and clipping.
+- Editor rotation angle drives upper-sphere rotation; a selected circuit
+  operation uses the target qubit's pre-column Bloch vector as its start.
+- Manual start sliders clear the circuit-derived start and remain usable.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched

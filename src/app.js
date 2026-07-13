@@ -1,6 +1,6 @@
 import { gates, gateName, conditionDescription } from "./gates.js";
 import { DEG, axisVector, project, rotate, startVector, vec } from "./math3d.js";
-import { initCircuit, simulate } from "./circuit.js";
+import { initCircuit, reducedSummary, simulate } from "./circuit.js";
 import { renderRelationship } from "./relationship.js";
 import { initMeasurement } from "./measurement.js";
 import { generateQiskit } from "./codegen.js";
@@ -13,9 +13,11 @@ const ui = {
 };
 let timer = null;
 const camera = { yaw: 25 * DEG, pitch: -8 * DEG };
+let circuitGateOverride = null;
+let circuitStartOverride = null;
 
 function name(gate) { return gateName(gate); }
-function currentGate() { return gates.find((gate) => gate.id === ui.gate.value) || gates[0]; }
+function currentGate() { return circuitGateOverride || gates.find((gate) => gate.id === ui.gate.value) || gates[0]; }
 function opposite(v) { return vec(-v.x, -v.y, -v.z); }
 
 function refreshNames() {
@@ -64,7 +66,7 @@ function draw() {
   const axis = axisVector(gate.axis);
   const conditional = Boolean(gate.controls);
   const enabled = !conditional || ui.condition.checked;
-  const start = startVector(+ui.y.value, +ui.x.value);
+  const start = circuitStartOverride || startVector(+ui.y.value, +ui.x.value);
   const progress = +ui.progress.value / 100;
   const { yaw, pitch } = camera;
   const angle = enabled ? gate.angle * DEG : 0;
@@ -72,8 +74,8 @@ function draw() {
   const end = rotate(start, axis, angle);
   const cx = 380, cy = 278, radius = 205;
 
-  $("start-y-out").textContent = `${ui.y.value}°`;
-  $("start-x-out").textContent = `${ui.x.value}°`;
+  $("start-y-out").textContent = circuitStartOverride ? "回路" : `${ui.y.value}°`;
+  $("start-x-out").textContent = circuitStartOverride ? "回路" : `${ui.x.value}°`;
   $("progress-out").textContent = `${ui.progress.value}%`;
   $("gate-badge").textContent = name(gate);
   ui.conditionRow.hidden = !conditional;
@@ -142,10 +144,12 @@ function draw() {
 
 function preset(name) {
   const values = { north:[0,0], south:[180,0], east:[90,0], west:[270,0], front:[0,270], back:[0,90] }[name];
-  [ui.y.value, ui.x.value] = values; ui.progress.value = 0; draw();
+  circuitStartOverride=null;[ui.y.value, ui.x.value] = values; ui.progress.value = 0; draw();
 }
 
-for (const element of [ui.gate, ui.y, ui.x, ui.progress, ui.condition]) element.addEventListener("input", draw);
+ui.gate.addEventListener("input",()=>{circuitGateOverride=null;draw()});
+for (const element of [ui.y,ui.x]) element.addEventListener("input",()=>{circuitStartOverride=null;draw()});
+for (const element of [ui.progress,ui.condition]) element.addEventListener("input",draw);
 for (const button of document.querySelectorAll("[data-preset]")) button.addEventListener("click", () => preset(button.dataset.preset));
 $("play").onclick = () => { if (timer) return; if (+ui.progress.value >= 100) ui.progress.value = 0; timer = setInterval(() => { ui.progress.value = Math.min(100, +ui.progress.value + 1); draw(); if (+ui.progress.value >= 100) { clearInterval(timer); timer = null; } }, 25); };
 $("stop").onclick = () => { if (timer) clearInterval(timer); timer = null; };
@@ -174,9 +178,12 @@ let circuitSnapshot=[],circuitSteps=8,measurementFilters=Array.from({length:3},(
 const refreshCode=()=>{$("qiskit-code").textContent=generateQiskit(circuitSnapshot,circuitSteps,measurementFilters)};
 const measurement=initMeasurement({onFilters(filters){measurementFilters=filters;refreshCode()}});
 initCircuit({
-  onSelect(gateId) {
-    if (!gates.some((gate) => gate.id === gateId)) return;
-    ui.gate.value = gateId;
+  onSelect({operation,target=0,startState=null,source}) {
+    if (!operation) return;
+    const axes={rx:"x",x:"x",cx:"x",ccx:"x",ry:"y",y:"y",rz:"z",z:"z",s:"z",sdg:"z",t:"z",tdg:"z",h:"h"};
+    const angles={x:180,y:180,z:180,h:180,s:90,sdg:-90,t:45,tdg:-45,cx:180,ccx:180};
+    circuitGateOverride={id:operation.id||operation.kind,standard:operation.label||operation.kind.toUpperCase(),sphere:operation.sphere||"回路エディターの操作",axis:axes[operation.kind]||"y",angle:operation.angle??angles[operation.kind]??90,...(operation.kind==="cx"?{controls:["control"],target:"target"}:{})};
+    if(source==="circuit"&&startState){const summary=reducedSummary(startState,target);circuitStartOverride=vec(summary.x,summary.y,summary.z)}
     ui.progress.value = 0;
     draw();
   },
