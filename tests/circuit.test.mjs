@@ -1,9 +1,17 @@
 import assert from "node:assert/strict";
-import { simulate } from "../src/circuit.js";
+import { insertBlankColumn, simulate } from "../src/circuit.js";
 import { abs2 } from "../src/complex.js";
 
 const blank=()=>({singles:[null,null,null],multi:null});
 const close=(value,re,im=0)=>{assert.ok(Math.abs(value.re-re)<1e-12,`${value.re} != ${re}`);assert.ok(Math.abs(value.im-im)<1e-12,`${value.im} != ${im}`)};
+const beforeColumns=[{id:"left"},{id:"selected"},{id:"right"}];
+let keptSelection=insertBlankColumn(beforeColumns,1,false);
+assert.deepEqual(beforeColumns.map(column=>column.id||"blank"),["left","blank","selected","right"]);
+assert.equal(keptSelection,2);
+const afterColumns=[{id:"left"},{id:"selected"},{id:"right"}];
+keptSelection=insertBlankColumn(afterColumns,1,true);
+assert.deepEqual(afterColumns.map(column=>column.id||"blank"),["left","selected","blank","right"]);
+assert.equal(keptSelection,1);
 const columns=Array.from({length:8},blank);
 columns[0].singles[0]={kind:"h"};
 columns[1].multi={kind:"cx",control:0,target:1};
