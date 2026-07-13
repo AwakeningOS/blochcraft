@@ -16,4 +16,3 @@ metrics=relationshipMetrics(state);
 metrics.forEach((m)=>close(m.vault,1,`GHZ ${m.name} vault`));
 
 console.log("relationship tests: OK");
-

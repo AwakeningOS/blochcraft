@@ -6,12 +6,13 @@ Continue the existing BlochCraft work in this repository.
 
 ## Current Task
 
-Create the first project checkpoint commit after successful v0.4 validation.
+Select the next BlochCraft roadmap feature after the validated v0.4 checkpoint.
 
 ## Hard Constraints
 
 - Preserve the existing implementation and verify before claiming completion.
 - Do not infer functionality from documentation when source or tests disagree.
+- Publish final work to `https://github.com/AwakeningOS/blochcraft`.
 
 ## Current Repo / Directory
 
@@ -31,16 +32,17 @@ Create the first project checkpoint commit after successful v0.4 validation.
   measurement lab, and Qiskit code bridge.
 - README and roadmap now reflect verified implementation status.
 - Post-documentation tests passed 5/5; `git diff --check` found no errors.
+- Initial project checkpoint commit is `c554877`.
 
 ## Current Blockers
 
-None.
+GitHub CLI authentication is invalid; remote publication requires `gh auth login`.
 
 ## Next 1-3 Actions
 
-1. Commit the validated project checkpoint.
-2. Inspect final repository status and commit summary.
-3. Select the next roadmap feature.
+1. Commit the final whitespace cleanup on `agent/blochcraft-v0-4`.
+2. Re-authenticate GitHub CLI.
+3. Push the branch and open a draft PR to `main`.
 
 ## Last Updated
 

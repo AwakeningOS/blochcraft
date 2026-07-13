@@ -6,12 +6,13 @@ Continue BlochCraft development.
 
 ## Current Task
 
-Create the first project checkpoint commit and select the next roadmap feature.
+Select the next roadmap feature after the validated v0.4 checkpoint.
 
 ## Hard Constraints
 
 - Evidence over stale documentation.
 - Do not claim browser validation until it is actually run.
+- Final work must be published to `https://github.com/AwakeningOS/blochcraft`.
 
 ## Verified Facts
 
@@ -22,6 +23,7 @@ Create the first project checkpoint commit and select the next roadmap feature.
 - Headless browser smoke validation rendered all five major sections.
 - README and roadmap were reconciled with the source.
 - Post-edit Node tests pass 5/5 and `git diff --check` is clean.
+- Initial project checkpoint is commit `c554877`.
 
 ## Files Touched
 
@@ -29,13 +31,14 @@ Create the first project checkpoint commit and select the next roadmap feature.
 
 ## Current Status
 
-Validation is complete; checkpoint commit is next.
+Validation and the initial checkpoint commit are complete. GitHub CLI auth is
+invalid, so push and draft PR creation are pending re-authentication.
 
 ## Next Actions
 
-1. Commit the validated project files.
-2. Confirm clean repository status.
-3. Select the next roadmap feature.
+1. Run `gh auth login -h github.com` and confirm `gh auth status` succeeds.
+2. Push `agent/blochcraft-v0-4` and open a draft PR to `main`.
+3. Preserve the tested v0.4 baseline while selecting the next roadmap feature.
 
 ## Do Not Assume
 

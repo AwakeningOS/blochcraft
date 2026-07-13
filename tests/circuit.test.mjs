@@ -17,4 +17,3 @@ assert.ok(Math.abs(state[7]-Math.SQRT1_2)<1e-12);
 assert.equal(state.filter((x)=>Math.abs(x)>1e-12).length,2);
 
 console.log("circuit tests: OK");
-

@@ -21,4 +21,3 @@ const afterFullTurn = rotate(arbitrary, axisVector("y"), 360 * DEG);
 close(afterFullTurn, arbitrary, "full turn returns the state");
 
 console.log("math3d tests: OK");
-
