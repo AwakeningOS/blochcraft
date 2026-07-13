@@ -1,5 +1,21 @@
 # Evidence Log
 
+## Evidence Entry: 第1回の語り口に関するユーザー修正
+
+- Time: 2026-07-13 JST
+- Action: 否定的な前置き、批判を想定した逃げ文、AIがユーザーを代弁する一人称表現を原稿から削除し、編集指針へ追加。
+- Evidence: ユーザーの連続した明示修正と原稿差分。一人称検索で残存なし。
+- Files: 第1回原稿、`EDITORIAL_GUIDE.md`, `SERIES_STATE.md`, `.codex-hygiene/AGENT_STATE.md`
+- Result: 今後の連載でも同じ文体上の誤りを繰り返さない制約を保存。
+
+## Evidence Entry: 第1回の否定的な前置きを削除
+
+- Time: 2026-07-13 JST
+- Action: 「有名な量子アルゴリズムを暗記して、専門家と同じ答えを言う講座ではない」という一文を削除し、編集指針へ反映。
+- Evidence: ユーザーの明示的な削除指示と原稿差分。
+- Files: `articles/01-programming-possibilities.md`, `EDITORIAL_GUIDE.md`
+- Result: 連載の意義を他者との否定的比較で説明しない方針を保存。
+
 ## Evidence Entry: 第1回初稿
 
 - Time: 2026-07-13 JST
