@@ -1,6 +1,8 @@
 .learning-shell { max-width:1132px; margin:0 auto 30px; padding:22px; background:color-mix(in srgb,var(--panel) 94%,transparent); border:1px solid var(--border); border-radius:18px; box-shadow:0 14px 40px #30405012; }
 .measurement-bases { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0; }
 .filter-controls { display:grid; gap:8px; padding:12px; border-radius:10px; background:#6c7b8b12; }
+.filter-presets { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+.filter-presets button { padding:6px 3px; font-size:10px; white-space:nowrap; }
 .filter-controls:nth-child(1)>strong { color:#a98200; }.filter-controls:nth-child(2)>strong { color:#d51631; }.filter-controls:nth-child(3)>strong { color:#854400; }
 .measurement-bases label { display:grid; grid-template-columns:105px 1fr 45px; align-items:center; gap:8px; }
 .measurement-bases input { width:100%; }
