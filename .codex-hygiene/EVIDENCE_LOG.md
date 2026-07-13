@@ -71,3 +71,11 @@
 - Evidence: 6/6 tests passed. Browser automation reported Lab `paths: 3`, `topLink: false`, bottom heading `次は、何を起こしたい？`; clicking `open-choice` opened the common Quest URL with the matching title, three conditions, and `LABから観測中`.
 - Files: `index.html`, `src/app.js`, `src/learning.css`, `quest.html`, `src/quest.js`, `src/quest-engine.js`, `tests/quest-engine.test.mjs`
 - Result: The experiment window is the primary app; purpose selection at its bottom opens a reusable purpose window.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Reworked the purpose-flow copy and information order after user discussion.
+- Evidence: User chose a calm guide voice and authorized building the broad structure before detailed language refinement. 6/6 tests passed. Browser inspection found Lab heading `この実験台で作れる現象`, two continuity paragraphs, three cards; purpose window contained `進め方`, `成立条件`, `現在の確認結果`, `手がかりを見る`, live Lab status, and no `#open-lab` button.
+- Files: `index.html`, `quest.html`, `src/learning.css`, `src/quest.css`, `src/quest.js`, `README.md`
+- Result: The agreed information architecture is implemented; detailed Japanese wording remains intentionally open to user refinement.

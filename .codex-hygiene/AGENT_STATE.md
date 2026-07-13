@@ -8,7 +8,8 @@ the prototype from user feedback.
 
 ## Current Task
 
-Deliver the revised Lab-first, common Quest-window prototype for user refinement.
+Deliver the calm, explanatory outer structure for the Lab-first purpose flow;
+fine Japanese wording will be refined later with the user.
 
 ## Hard Constraints
 
@@ -46,6 +47,14 @@ Deliver the revised Lab-first, common Quest-window prototype for user refinement
   query-selected purpose.
 - Browser automation verified three bottom paths, no top Quest link, and the
   `open-choice` purpose loading in the shared Quest window.
+- User selected a calm experimental-guide voice and asked to prioritize the
+  overall structure before detailed Japanese copyediting.
+- Purpose flow now explains continuity from Lab to the separate window.
+- Shared purpose window order is: phenomenon, how to proceed, conditions,
+  current result, optional clue.
+- Game-like wording and the nonfunctional return-to-Lab button were removed.
+- Browser inspection verified the new labels, no return button, three purpose
+  cards, and live Lab connection.
 
 ## Current Blockers
 
@@ -53,9 +62,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the revised Lab-first flow to draft PR #1.
-2. Open the Lab for the user and collect refinement requests.
-3. Preserve one shared Quest window while expanding purpose paths.
+1. Commit and push the calm explanatory structure to draft PR #1.
+2. Open the refreshed Lab for the user.
+3. Refine individual Japanese phrases from user feedback without changing the agreed structure.
 
 ## Last Updated
 

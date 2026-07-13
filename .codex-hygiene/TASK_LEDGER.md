@@ -9,3 +9,4 @@
 | BC-05 | Publish v0.4 checkpoint to GitHub | done_verified | Remote branch; draft PR #1 | `https://github.com/AwakeningOS/blochcraft/pull/1` |
 | BC-06 | Separate-window intent-driven Quest prototype | done_verified | 6/6 tests; browser Quest->Lab->MISSION COMPLETE | Awaiting user refinement |
 | BC-07 | Lab-first bottom purpose paths and common Quest window | done_verified | 6/6 tests; browser reports 3 paths and correct shared Quest content | User-directed architecture correction |
+| BC-08 | Calm explanatory copy structure | done_verified | 6/6 tests; browser verifies guide/conditions/result/clue structure | Detailed Japanese refinement deferred by user |

@@ -21,9 +21,10 @@
 .sample-empty { padding:18px; color:var(--muted); background:#6c7b8b12; border-radius:9px; }
 .code-panel { margin:15px 0 0; padding:18px; overflow:auto; border-radius:12px; background:#111a24; color:#d9e7f2; line-height:1.55; font-size:13px; }
 .purpose-shell { border-top:4px solid var(--accent); }
+.purpose-intro { max-width:880px; margin:8px 0; color:var(--muted); font-size:14px; line-height:1.75; }
 .purpose-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
 .purpose-grid article { display:flex; flex-direction:column; gap:9px; min-height:250px; padding:18px; border:1px solid var(--border); border-radius:14px; background:#6c7b8b0d; }
-.purpose-grid h3 { margin:0; font-size:17px; line-height:1.5; }
+.purpose-grid h3 { margin:0; font-size:17px; line-height:1.55; }
 .purpose-grid p { margin:0 0 auto; color:var(--muted); font-size:13px; line-height:1.6; }
 .purpose-grid button { align-self:flex-start; font-weight:800; }
 .purpose-number { color:var(--accent); font-size:12px; font-weight:900; letter-spacing:.14em; }

@@ -9,12 +9,19 @@
 <body>
   <main class="quest-shell">
     <header>
-      <p id="quest-number" class="eyebrow">BlochCraft Quest</p>
+      <p id="quest-number" class="eyebrow">目的別の実験</p>
       <h1 id="quest-title"></h1>
       <p id="quest-lead" class="lead"></p>
     </header>
 
+    <section class="guide-card">
+      <p class="section-label">進め方</p>
+      <h2>回路の操作は、先ほどの実験画面で行います。</h2>
+      <p>この画面は開いたままにしてください。実験画面で回路を変更するたびに、下の成立条件と確認結果が自動で更新されます。</p>
+    </section>
+
     <section class="mission-card">
+      <p class="section-label">成立条件</p>
       <div class="mission-visual" aria-label="AとBが同じ結果を共有する">
         <span id="orb-a" class="orb orb-a">A</span><span class="link">• • •</span><span id="orb-b" class="orb orb-b">B</span>
       </div>
@@ -26,14 +33,14 @@
     </section>
 
     <section id="feedback" class="feedback waiting">
-      <p class="status-label">LABとつながっていません</p>
-      <h2>BlochCraft Labで試してみよう。</h2>
-      <p id="feedback-text">答えの回路は表示しません。回路を変えるたび、ここに現象の変化が返ってきます。</p>
+      <p class="section-label">現在の確認結果</p>
+      <p class="status-label">実験画面と接続していません</p>
+      <h2>実験画面の回路を確認できません。</h2>
+      <p id="feedback-text">この画面を、実験画面の最下部にあるボタンから開いてください。</p>
     </section>
 
     <div class="actions">
-      <button id="open-lab">実験用ウィンドウに戻る</button>
-      <button id="hint" class="secondary">小さなヒント</button>
+      <button id="hint" class="secondary">手がかりを見る</button>
     </div>
     <p id="hint-text" class="hint" hidden></p>
   </main>
