@@ -14,7 +14,6 @@
       <h1>BlochCraft</h1>
       <p>球体を動かし、量子ゲートの軸・角度・条件を直感と標準用語の両方で学ぶ。</p>
     </div>
-    <a class="quest-launch" href="quest.html" target="blochcraft-quest">目的から始める ↗</a>
   </header>
 
   <main>
@@ -111,6 +110,15 @@
     <div class="section-heading"><div><p class="eyebrow">Code bridge</p><h2 id="code-title">回路からQiskitコードへ</h2></div><button id="copy-code">コードをコピー</button></div>
     <p class="circuit-help">上で「ここまで実行」にした列と、測定方向がそのままPython/Qiskitコードになります。</p>
     <pre class="code-panel"><code id="qiskit-code"></code></pre>
+  </section>
+  <section class="learning-shell purpose-shell" aria-labelledby="purpose-title">
+    <div class="section-heading"><div><p class="eyebrow">Purpose paths</p><h2 id="purpose-title">次は、何を起こしたい？</h2></div><span class="badge">目的から始める</span></div>
+    <p class="circuit-help">ゲートの名前からではなく、作りたい現象を選んでください。選んだ目的は別ウィンドウに開き、この実験台で作った回路を自動で観測します。</p>
+    <div class="purpose-grid">
+      <article><span class="purpose-number">01</span><h3>離れた二つの球に、同じ秘密の合図を持たせたい</h3><p>結果は予定しない。でもAとBは必ず同じ答えを出す。</p><button data-quest="shared-secret">この目的に挑戦 ↗</button></article>
+      <article><span class="purpose-number">02</span><h3>Aだけを、確実に北から南へ移動させたい</h3><p>BとCには触れず、Aの向きだけを完全に反転させる。</p><button data-quest="flip-a">この目的に挑戦 ↗</button></article>
+      <article><span class="purpose-number">03</span><h3>Aの答えを、一つに決められなくしたい</h3><p>北と南のどちらにも可能性を残し、BとCはそのままにする。</p><button data-quest="open-choice">この目的に挑戦 ↗</button></article>
+    </div>
   </section>
   <footer>BlochCraft v0.4 · MIT License · AwakeningOS</footer>
   <script type="module" src="src/app.js"></script>

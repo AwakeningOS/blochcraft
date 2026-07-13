@@ -8,7 +8,7 @@ the prototype from user feedback.
 
 ## Current Task
 
-Deliver the first separate-window Quest prototype for user refinement.
+Deliver the revised Lab-first, common Quest-window prototype for user refinement.
 
 ## Hard Constraints
 
@@ -41,6 +41,11 @@ Deliver the first separate-window Quest prototype for user refinement.
 - Automated browser interaction verified Quest -> Lab opening, live circuit
   state transfer, and `MISSION COMPLETE` after H(A), CNOT(A->B).
 - Node tests pass 6/6 including the quest evaluator.
+- The Lab is again the initial screen; three purpose paths are at its bottom.
+- All purpose buttons open one common Quest window whose content changes by
+  query-selected purpose.
+- Browser automation verified three bottom paths, no top Quest link, and the
+  `open-choice` purpose loading in the shared Quest window.
 
 ## Current Blockers
 
@@ -48,9 +53,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the Quest prototype to draft PR #1.
-2. Let the user interact with the prototype and collect refinement requests.
-3. Preserve Lab freedom while iterating on the purpose-driven Quest window.
+1. Commit and push the revised Lab-first flow to draft PR #1.
+2. Open the Lab for the user and collect refinement requests.
+3. Preserve one shared Quest window while expanding purpose paths.
 
 ## Last Updated
 

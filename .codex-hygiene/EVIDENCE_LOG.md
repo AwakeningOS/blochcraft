@@ -63,3 +63,11 @@
 - Evidence: 6/6 Node tests passed. Chrome DevTools automation opened `quest.html`, clicked the Lab launcher, created H(A) then CNOT(A->B), and returned `{status: "MISSION COMPLETE", passed: 3}` from the Quest window.
 - Files: `quest.html`, `src/quest.js`, `src/quest-engine.js`, `src/quest.css`, `src/app.js`, `index.html`, `tests/quest-engine.test.mjs`
 - Result: Quest and Lab communicate in real time; the secret-signal mission detects its three outcome conditions without exposing the answer circuit upfront.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Reworked navigation from user feedback so Lab is first and purpose paths live at the bottom.
+- Evidence: 6/6 tests passed. Browser automation reported Lab `paths: 3`, `topLink: false`, bottom heading `次は、何を起こしたい？`; clicking `open-choice` opened the common Quest URL with the matching title, three conditions, and `LABから観測中`.
+- Files: `index.html`, `src/app.js`, `src/learning.css`, `quest.html`, `src/quest.js`, `src/quest-engine.js`, `tests/quest-engine.test.mjs`
+- Result: The experiment window is the primary app; purpose selection at its bottom opens a reusable purpose window.

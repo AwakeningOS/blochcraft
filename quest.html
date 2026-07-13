@@ -9,20 +9,19 @@
 <body>
   <main class="quest-shell">
     <header>
-      <p class="eyebrow">BlochCraft Quest 01</p>
-      <h1>離れた二つの球に、<br>同じ秘密の合図を持たせたい。</h1>
-      <p class="lead">南北どちらが出るかは決まっていない。でもAとBを測ると、必ず同じ合図が出る。そんな回路を作ってみよう。
-      </p>
+      <p id="quest-number" class="eyebrow">BlochCraft Quest</p>
+      <h1 id="quest-title"></h1>
+      <p id="quest-lead" class="lead"></p>
     </header>
 
     <section class="mission-card">
       <div class="mission-visual" aria-label="AとBが同じ結果を共有する">
-        <span class="orb orb-a">A</span><span class="link">• • •</span><span class="orb orb-b">B</span>
+        <span id="orb-a" class="orb orb-a">A</span><span class="link">• • •</span><span id="orb-b" class="orb orb-b">B</span>
       </div>
       <div class="conditions">
-        <div id="condition-random"><span>○</span><p><strong>結果は一つに決めない</strong><small>北北と南南の両方が現れる</small></p></div>
-        <div id="condition-together"><span>○</span><p><strong>AとBは必ず同じ結果</strong><small>北南、南北は現れない</small></p></div>
-        <div id="condition-calm"><span>○</span><p><strong>Cはそっとしておく</strong><small>Cは北のまま</small></p></div>
+        <div id="condition-0"><span>○</span><p><strong></strong><small></small></p></div>
+        <div id="condition-1"><span>○</span><p><strong></strong><small></small></p></div>
+        <div id="condition-2"><span>○</span><p><strong></strong><small></small></p></div>
       </div>
     </section>
 
@@ -33,7 +32,7 @@
     </section>
 
     <div class="actions">
-      <button id="open-lab">実験台を別ウィンドウで開く ↗</button>
+      <button id="open-lab">実験用ウィンドウに戻る</button>
       <button id="hint" class="secondary">小さなヒント</button>
     </div>
     <p id="hint-text" class="hint" hidden></p>

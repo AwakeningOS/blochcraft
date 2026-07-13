@@ -7,7 +7,7 @@ from what they want to cause and opens the free Lab in a separate window.
 
 ## Current Task
 
-Have the user try Quest 01 and refine it from direct feedback.
+Have the user try the revised Lab-first purpose flow and refine it from direct feedback.
 
 ## Hard Constraints
 
@@ -29,6 +29,8 @@ Have the user try Quest 01 and refine it from direct feedback.
 - Quest 01 and Lab are separate windows connected with same-origin postMessage.
 - Browser automation verified H(A), CNOT(A->B) produces MISSION COMPLETE.
 - Node tests pass 6/6 including Quest evaluation.
+- Lab is the initial screen; three purpose paths appear at the bottom.
+- One shared Quest window switches its content and evaluator by selected purpose.
 
 ## Files Touched
 
@@ -41,9 +43,9 @@ Validation and GitHub publication are complete. Draft PR #1 targets `main`:
 
 ## Next Actions
 
-1. Push the Quest prototype to draft PR #1.
+1. Push the revised Lab-first flow to draft PR #1.
 2. Ask the user to try it and follow their refinement direction.
-3. Do not replace the purpose-first design with a conventional syllabus.
+3. Keep the shared Quest window and do not replace purpose paths with a syllabus.
 
 ## Do Not Assume
 

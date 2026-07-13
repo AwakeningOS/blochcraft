@@ -189,3 +189,4 @@ initCircuit({
   onCircuit(columns,steps){circuitSnapshot=columns;circuitSteps=steps;const history=Array.from({length:steps+1},(_,i)=>simulate(columns,i));renderRelationship(history.at(-1),{svg:$("relationship-view"),cards:$("relationship-cards"),history});refreshCode();notifyQuest()},
 });
 $("copy-code").onclick=async()=>{try{await navigator.clipboard.writeText($("qiskit-code").textContent);$("copy-code").textContent="コピーしました";setTimeout(()=>$("copy-code").textContent="コードをコピー",1200)}catch{$("copy-code").textContent="選択してコピーしてください"}};
+for(const button of document.querySelectorAll("[data-quest]")) button.onclick=()=>window.open(`./quest.html?quest=${encodeURIComponent(button.dataset.quest)}`,"blochcraft-quest","width=820,height=900");
