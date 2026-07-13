@@ -2,7 +2,7 @@ import { DEG, project, vec } from "./math3d.js";
 import { reducedSummary } from "./circuit.js";
 
 const NAMES=["A","B","C"],COLORS=["#d9a900","#ef233c","#9b4f00"];
-const camera={yaw:-25*DEG,pitch:-8*DEG};
+const camera={yaw:25*DEG,pitch:-8*DEG};
 let lastState=null,lastTargets=null,lastHistory=null,drag=null,installed=false;
 
 export function relationshipMetrics(state){
@@ -22,7 +22,7 @@ function sphere(metric,cx,cy,r,index,history){
   const axes=[[vec(0,0,1),"#4f708f"],[vec(1,0,0),"#98703d"],[vec(0,1,0),"#795f82"]];
   for(const[a,color]of axes){const p=project(a,cx,cy,r*1.16,camera.yaw,camera.pitch),m=project(opposite(a),cx,cy,r*1.16,camera.yaw,camera.pitch);s+=line(m,p,color,1.25,.72)}
   const dirs=[["北 |0⟩",vec(0,0,1),"#2a78d6"],["南 |1⟩",vec(0,0,-1),"#d1495b"],["東 |+⟩",vec(1,0,0),"#1baf7a"],["西 |−⟩",vec(-1,0,0),"#c98500"],["表 |+i⟩",vec(0,1,0),"#d43791"],["裏 |−i⟩",vec(0,-1,0),"#008ca8"]];
-  for(const[label,v,color]of dirs){const p=project(v,cx,cy,r,camera.yaw,camera.pitch);let dx=p.x-cx,dy=p.y-cy,l=Math.hypot(dx,dy);if(l<1){dx=label.startsWith("表")?1:-1;dy=.3;l=Math.hypot(dx,dy)}const t={x:cx+(r+27)*dx/l,y:cy+(r+27)*dy/l};s+=`<circle cx="${p.x}" cy="${p.y}" r="2.8" fill="${color}"/>${line(p,t,color,.7,.5)}<text x="${t.x}" y="${t.y+4}" text-anchor="middle" font-size="9.5" font-weight="700" fill="${color}">${label}</text>`}
+  for(const[label,v,color]of dirs){const p=project(v,cx,cy,r,camera.yaw,camera.pitch),front=p.depth<0,opacity=front?1:.28;let dx=p.x-cx,dy=p.y-cy,l=Math.hypot(dx,dy);if(l<1){dx=label.startsWith("表")?1:-1;dy=.3;l=Math.hypot(dx,dy)}const t={x:cx+(r+27)*dx/l,y:cy+(r+27)*dy/l};s+=`<g opacity="${opacity}"><circle cx="${p.x}" cy="${p.y}" r="2.8" fill="${color}"/>${line(p,t,color,.7,front?.6:.3,front?"":"3,3")}<text x="${t.x}" y="${t.y+4}" text-anchor="middle" font-size="9.5" font-weight="700" fill="${color}">${label}</text></g>`}
   s+=historyTrail(history,index,cx,cy,r,metric.color);
   if(metric.visible>.005){const unit=metric.visible?vec(metric.x/metric.visible,metric.y/metric.visible,metric.z/metric.visible):vec(0,0,1),tip=project(unit,cx,cy,r*metric.visible,camera.yaw,camera.pitch);s+=arrow(cx,cy,tip);s+=`<circle cx="${tip.x+2}" cy="${tip.y+3}" r="8" fill="#26384b" opacity=".18"/><circle cx="${tip.x}" cy="${tip.y}" r="7" fill="url(#rel-tip)" stroke="#fff" stroke-width=".8"/>`}
   else s+=`<circle cx="${cx}" cy="${cy}" r="6" fill="none" stroke="var(--text)" stroke-width="1.5"/>`;
@@ -31,6 +31,6 @@ function sphere(metric,cx,cy,r,index,history){
   return s;
 }
 
-function installInteraction(svg,cards){if(installed)return;installed=true;svg.style.touchAction="none";svg.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,yaw:camera.yaw,pitch:camera.pitch};svg.setPointerCapture(e.pointerId);svg.classList.add("dragging")});svg.addEventListener("pointermove",e=>{if(!drag)return;camera.yaw=drag.yaw+(e.clientX-drag.x)*.008;camera.pitch=drag.pitch-(e.clientY-drag.y)*.008;renderRelationship(lastState,{svg,cards})});const end=()=>{drag=null;svg.classList.remove("dragging")};svg.addEventListener("pointerup",end);svg.addEventListener("pointercancel",end);document.getElementById("relationship-reset-view").onclick=()=>{camera.yaw=-25*DEG;camera.pitch=-8*DEG;renderRelationship(lastState,{svg,cards})}}
+function installInteraction(svg,cards){if(installed)return;installed=true;svg.style.touchAction="none";svg.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,yaw:camera.yaw,pitch:camera.pitch};svg.setPointerCapture(e.pointerId);svg.classList.add("dragging")});svg.addEventListener("pointermove",e=>{if(!drag)return;camera.yaw=drag.yaw+(e.clientX-drag.x)*.008;camera.pitch=drag.pitch-(e.clientY-drag.y)*.008;renderRelationship(lastState,{svg,cards})});const end=()=>{drag=null;svg.classList.remove("dragging")};svg.addEventListener("pointerup",end);svg.addEventListener("pointercancel",end);document.getElementById("relationship-reset-view").onclick=()=>{camera.yaw=25*DEG;camera.pitch=-8*DEG;renderRelationship(lastState,{svg,cards})}}
 
 export function renderRelationship(state,{svg,cards,history=lastHistory}){lastState=state;lastHistory=history;lastTargets={svg,cards};installInteraction(svg,cards);const metrics=relationshipMetrics(state),centers=[180,540,900],cy=165,r=92;let out='<defs><radialGradient id="rel-globe" cx="34%" cy="27%" r="72%"><stop offset="0%" stop-color="#fff" stop-opacity=".4"/><stop offset="100%" stop-color="#58728a" stop-opacity=".22"/></radialGradient><radialGradient id="rel-tip" cx="30%" cy="25%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#52616f"/></radialGradient></defs>';metrics.forEach((m,i)=>out+=sphere(m,centers[i],cy,r,i,history));svg.innerHTML=out;cards.innerHTML=metrics.map(m=>`<div class="relationship-card"><strong style="color:${m.color}">${m.name}</strong><span>単体矢印 ${(m.visible*100).toFixed(1)}%</span><span>関係金庫 ${(m.vault*100).toFixed(1)}%</span><small>北 |0⟩ ${(m.p0*100).toFixed(1)}% / 南 |1⟩ ${(m.p1*100).toFixed(1)}%</small></div>`).join("")}

@@ -12,7 +12,7 @@ const ui = {
   conditionRow: $("condition-row"), conditionHelp: $("condition-help"), facts: $("facts"),
 };
 let timer = null;
-const camera = { yaw: -25 * DEG, pitch: -8 * DEG };
+const camera = { yaw: 25 * DEG, pitch: -8 * DEG };
 let circuitGateOverride = null;
 let circuitStartOverride = null;
 
@@ -117,7 +117,8 @@ function draw() {
     let dx=point.x-cx,dy=point.y-cy,length=Math.hypot(dx,dy);
     if(length<1){dx=label.startsWith("表")?1:-1;dy=label.startsWith("表")?-.35:.35;length=Math.hypot(dx,dy)}
     const text={x:cx+(radius+82)*dx/length,y:cy+(radius+82)*dy/length};
-    svg += `<circle cx="${point.x}" cy="${point.y}" r="4.5" fill="${color}"/><line x1="${point.x}" y1="${point.y}" x2="${text.x}" y2="${text.y}" stroke="${color}" opacity=".55"/><text x="${text.x}" y="${text.y+6}" font-size="18" font-weight="700" fill="${color}" text-anchor="middle">${label}</text>`;
+    const front=point.depth<0,opacity=front?1:.3,dash=front?"":'stroke-dasharray="4,4"';
+    svg += `<circle cx="${point.x}" cy="${point.y}" r="4.5" fill="${color}" opacity="${opacity}"/><line x1="${point.x}" y1="${point.y}" x2="${text.x}" y2="${text.y}" stroke="${color}" opacity="${front?.65:.25}" ${dash}/><text x="${text.x}" y="${text.y+6}" font-size="18" font-weight="700" fill="${color}" opacity="${opacity}" text-anchor="middle">${label}</text>`;
   }
 
   const axisA = project(axis, cx, cy, radius * 1.32, yaw, pitch), axisB = project(opposite(axis), cx, cy, radius * 1.32, yaw, pitch);
@@ -153,7 +154,7 @@ for (const element of [ui.progress,ui.condition]) element.addEventListener("inpu
 for (const button of document.querySelectorAll("[data-preset]")) button.addEventListener("click", () => preset(button.dataset.preset));
 $("play").onclick = () => { if (timer) return; if (+ui.progress.value >= 100) ui.progress.value = 0; timer = setInterval(() => { ui.progress.value = Math.min(100, +ui.progress.value + 1); draw(); if (+ui.progress.value >= 100) { clearInterval(timer); timer = null; } }, 25); };
 $("stop").onclick = () => { if (timer) clearInterval(timer); timer = null; };
-const resetSingleView = () => { camera.yaw = -25 * DEG; camera.pitch = -8 * DEG; draw(); };
+const resetSingleView = () => { camera.yaw = 25 * DEG; camera.pitch = -8 * DEG; draw(); };
 $("reset-view").onclick = resetSingleView;
 $("reset-view-controls").onclick = resetSingleView;
 
