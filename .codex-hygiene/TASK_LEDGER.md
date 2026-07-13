@@ -2,6 +2,8 @@
 
 | ID | Task | Status | Evidence | Notes |
 |---|---|---|---|---|
+| SERIES-01 | 連載専用フォルダーと再開可能な制作記録を作る | done_verified | `docs/series/quantum-circuit-ai/`のファイル内容とgit diff | 次は第1回構成の調整 |
+| SERIES-02 | 第1回「可能性をプログラムする」の構成を確定する | in_progress | `articles/01-programming-possibilities.md` | ユーザーレビュー待ち |
 | BC-01 | Existing automated test suite | done_verified | 5/5 Node test suites passed | Before documentation update |
 | BC-02 | Browser smoke validation | done_verified | Headless Chrome DOM and screenshot | All five major UI sections rendered |
 | BC-03 | Documentation reconciliation | done_verified | README/roadmap diff; post-edit tests pass | Unimplemented roadmap items remain open |

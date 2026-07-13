@@ -6,6 +6,9 @@
 
 **[BlochCraftをブラウザーで開く](https://awakeningos.github.io/blochcraft/)**
 
+量子回路の本質を理解し、用途を発想してAIと実装するための連載資料は
+[`docs/series/quantum-circuit-ai/`](docs/series/quantum-circuit-ai/)で管理しています。
+
 ## 現在の段階
 
 `v0.4` は、球体操作・3量子ビット回路エディター・関係金庫ビュー・

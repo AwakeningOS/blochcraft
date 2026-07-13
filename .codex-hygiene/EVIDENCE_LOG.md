@@ -1,5 +1,13 @@
 # Evidence Log
 
+## Evidence Entry: 連載制作構造
+
+- Time: 2026-07-13 JST
+- Action: 連載用フォルダー、中心思想、記事地図、編集指針、制作状態、第1回構成案を作成。
+- Evidence: `docs/series/quantum-circuit-ai/`配下の実ファイル。
+- Files: `README.md`, `SERIES_CHARTER.md`, `ARTICLE_MAP.md`, `EDITORIAL_GUIDE.md`, `SERIES_STATE.md`, `articles/01-programming-possibilities.md`
+- Result: 次のエージェントが会話履歴を推測せず、ファイルから連載の目的と次の作業を確認できる構造になった。
+
 ## Evidence Entry
 
 - Time: 2026-07-13 JST

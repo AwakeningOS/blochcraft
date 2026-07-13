@@ -2,70 +2,48 @@
 
 ## User Goal
 
-Remove the rejected Quest prototype and make the three-qubit circuit editor
-substantially more complete.
+BlochCraftを使った量子回路プログラミングの連載を書く。目的は既存アルゴリズムの暗記ではなく、一般の人が量子回路の本質を理解し、自分の用途を発想し、AIに実装を依頼できる判断力を得ること。
 
 ## Current Task
 
-Continue expanding the verified complex-amplitude three-qubit editor.
+`docs/series/quantum-circuit-ai/`を起点に連載を制作する。最初は第1回の構成と本文。
 
 ## Hard Constraints
 
-- Evidence over stale documentation.
-- Do not claim browser validation until it is actually run.
-- Final work must be published to `https://github.com/AwakeningOS/blochcraft`.
+- 「ゲート一覧を順番に覚える」連載にしない。
+- 何を作りたいか、可能性・位相・関係・測定をどう操作したいかから逆算する。
+- 専門家の既存用途だけを正解として提示しない。
+- 読者がコードを全部手書きすることをゴールにしない。
+- AI出力を判断するための基礎理解をゴールにする。
+- 説明過剰な注意書き、独自用語、意味の薄い抽象文を避ける。
 
 ## Verified Facts
 
-- Existing Node tests pass 5/5.
-- Project files are untracked on `main`; only initial commit exists.
-- The original README/roadmap descriptions conflicted with the v0.4 footer
-  and modules; they have now been reconciled.
-- Headless browser smoke validation rendered all five major sections.
-- README and roadmap were reconciled with the source.
-- Post-edit Node tests pass 5/5 and `git diff --check` is clean.
-- Initial project checkpoint is commit `c554877`.
-- Remote branch `agent/blochcraft-v0-4` and draft PR #1 are published.
-- User explicitly rejected and deleted the Quest direction.
-- Complex amplitudes are supported throughout simulation, measurement,
-  relationship metrics, and display.
-- Editor supports X/Y/Z/H/S/S†/T/T†, arbitrary-angle RX/RY/RZ, six directed
-  CNOT pairs, one Toffoli, delete, and clear-all.
-- Browser automation verified H/S/RX(35°), complex amplitude display, Bloch Y,
-  and matching Qiskit output.
-- RX/RY/RZ use synchronized number, −360°..360° slider, and 11 clickable
-  representative-angle controls; browser synchronization is verified.
-- Responsive angle layout is verified at 1067 px with no card/page overflow;
-  this fixes a user-provided screenshot showing collapsed text and clipping.
-- Editor rotation angle drives upper-sphere rotation; a selected circuit
-  operation uses the target qubit's pre-column Bloch vector as its start.
-- Manual start sliders clear the circuit-derived start and remain usable.
-- Editor buttons again update the upper Operation select, badge, and sphere;
-  RX/RY/RZ and all six CNOT directions have exact select entries.
-- Three qubits are fixed; columns start at 8 and can add/insert/delete up to 64.
-- Browser verified 16-column step synchronization and local horizontal scroll
-  without page overflow.
-- Quest removal is verified by repository search; remaining tests pass 5/5.
+- 公開アプリ: https://awakeningos.github.io/blochcraft/
+- リポジトリ: https://github.com/AwakeningOS/blochcraft
+- ユーザー自身が連載の思想を明示した。詳細は`docs/series/quantum-circuit-ai/SERIES_CHARTER.md`を読むこと。
 
 ## Files Touched
 
-- `.codex-hygiene/*`
+- `docs/series/quantum-circuit-ai/`
+- `.codex-hygiene/`
 
 ## Current Status
 
-Validation and GitHub publication are complete. Draft PR #1 targets `main`:
-`https://github.com/AwakeningOS/blochcraft/pull/1`.
+連載制作へ移行。アプリの追加開発は、記事制作中に見つかった具体的な不便がある場合だけ行う。
 
 ## Next Actions
 
-1. Push the synchronized rotation-angle controls.
-2. Add CZ/SWAP or editor undo/move/copy based on the user's choice.
-3. Do not restore Quest work unless explicitly requested.
+1. `SERIES_STATE.md`を読む。
+2. 第1回の構成案をユーザーへ提示する。
+3. ユーザーの語り口を反映して本文を書く。
 
 ## Do Not Assume
 
-- Do not assume every roadmap item is complete merely because a related module exists.
+- 既存の教科書的カリキュラムがユーザーの望む構成だと仮定しない。
+- 「量子を学べばAI時代に安泰」と断言しない。
+- Bloch球だけで複数量子ビット全体を完全表示できると書かない。
 
 ## Quarantined / Unverified Claims
 
-- Existing README and roadmap status are current.
+- 過去のアプリ機能追加計画は連載の現行計画ではない。
