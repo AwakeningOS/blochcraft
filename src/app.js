@@ -172,9 +172,6 @@ ui.globe.addEventListener("pointercancel", endDrag);
 refreshNames();
 let circuitSnapshot=[],circuitSteps=8,measurementFilters=Array.from({length:3},()=>({theta:0,phi:0}));
 const refreshCode=()=>{$("qiskit-code").textContent=generateQiskit(circuitSnapshot,circuitSteps,measurementFilters)};
-const questPayload=()=>({type:"blochcraft:lab-state",columns:circuitSnapshot,steps:circuitSteps,state:simulate(circuitSnapshot,circuitSteps)});
-const notifyQuest=()=>{if(window.opener&&!window.opener.closed)window.opener.postMessage(questPayload(),location.origin)};
-window.addEventListener("message",(event)=>{if(event.origin!==location.origin||event.data?.type!=="blochcraft:request-state")return;event.source?.postMessage(questPayload(),event.origin)});
 const measurement=initMeasurement({onFilters(filters){measurementFilters=filters;refreshCode()}});
 initCircuit({
   onSelect(gateId) {
@@ -186,7 +183,6 @@ initCircuit({
   onState(state) {
     measurement.update(state);
   },
-  onCircuit(columns,steps){circuitSnapshot=columns;circuitSteps=steps;const history=Array.from({length:steps+1},(_,i)=>simulate(columns,i));renderRelationship(history.at(-1),{svg:$("relationship-view"),cards:$("relationship-cards"),history});refreshCode();notifyQuest()},
+  onCircuit(columns,steps){circuitSnapshot=columns;circuitSteps=steps;const history=Array.from({length:steps+1},(_,i)=>simulate(columns,i));renderRelationship(history.at(-1),{svg:$("relationship-view"),cards:$("relationship-cards"),history});refreshCode()},
 });
 $("copy-code").onclick=async()=>{try{await navigator.clipboard.writeText($("qiskit-code").textContent);$("copy-code").textContent="コピーしました";setTimeout(()=>$("copy-code").textContent="コードをコピー",1200)}catch{$("copy-code").textContent="選択してコピーしてください"}};
-for(const button of document.querySelectorAll("[data-quest]")) button.onclick=()=>window.open(`./quest.html?quest=${encodeURIComponent(button.dataset.quest)}`,"blochcraft-quest","width=820,height=900");

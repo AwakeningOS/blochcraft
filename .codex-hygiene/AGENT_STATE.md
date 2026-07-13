@@ -2,14 +2,12 @@
 
 ## Current User Goal
 
-Develop BlochCraft as an intent-driven learning experience: start from what
-the learner wants to cause, then use the Lab in a separate window and refine
-the prototype from user feedback.
+Remove the purpose/Quest prototype and focus on making the three-qubit circuit
+editor substantially more complete.
 
 ## Current Task
 
-Deliver the calm, explanatory outer structure for the Lab-first purpose flow;
-fine Japanese wording will be refined later with the user.
+Delete all Quest functionality and audit the circuit editor's command set.
 
 ## Hard Constraints
 
@@ -55,6 +53,13 @@ fine Japanese wording will be refined later with the user.
 - Game-like wording and the nonfunctional return-to-Lab button were removed.
 - Browser inspection verified the new labels, no return button, three purpose
   cards, and live Lab connection.
+- User rejected the Quest design and explicitly requested full deletion.
+- Quest UI, state messaging, evaluator, styles, tests, README, and roadmap
+  references have been removed from the active app.
+- Repository-wide active-app search found no remaining Quest/purpose UI references.
+- Remaining non-Quest test suite passes 5/5 and `git diff --check` is clean.
+- Current editor commands are limited to RY(30/60/90/-90), X, Z, H, six CNOT
+  directions, Toffoli A/B->C, delete, and clear-all.
 
 ## Current Blockers
 
@@ -62,9 +67,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the calm explanatory structure to draft PR #1.
-2. Open the refreshed Lab for the user.
-3. Refine individual Japanese phrases from user feedback without changing the agreed structure.
+1. Commit and push the verified Quest deletion.
+2. Present an exact command-gap audit to the user.
+3. Expand the editor only after agreeing on command categories and interaction design.
 
 ## Last Updated
 

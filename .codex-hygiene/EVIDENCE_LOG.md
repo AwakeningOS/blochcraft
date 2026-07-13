@@ -79,3 +79,19 @@
 - Evidence: User chose a calm guide voice and authorized building the broad structure before detailed language refinement. 6/6 tests passed. Browser inspection found Lab heading `この実験台で作れる現象`, two continuity paragraphs, three cards; purpose window contained `進め方`, `成立条件`, `現在の確認結果`, `手がかりを見る`, live Lab status, and no `#open-lab` button.
 - Files: `index.html`, `quest.html`, `src/learning.css`, `src/quest.css`, `src/quest.js`, `README.md`
 - Result: The agreed information architecture is implemented; detailed Japanese wording remains intentionally open to user refinement.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: User rejected the Quest direction and requested full deletion and a circuit-editor command audit.
+- Evidence: Explicit user instruction: `全削除して。まず3量子ビット回路エディターを充実させようか`.
+- Files: Removed `quest.html`, `src/quest.js`, `src/quest-engine.js`, `src/quest.css`, `tests/quest-engine.test.mjs`; removed Quest UI/communication/docs references.
+- Result: Quest work is abandoned and quarantined; current work returns to the three-qubit editor.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Verified complete removal of the rejected Quest feature.
+- Evidence: Repository-wide active-app search returned no Quest/purpose UI references; remaining Node suite passed 5/5; `git diff --check` returned no errors.
+- Files: `index.html`, `src/app.js`, `src/learning.css`, `src/styles.css`, `README.md`, `docs/ROADMAP.md`; deleted Quest source and test files.
+- Result: Active application is again the single BlochCraft Lab with no Quest entry point or runtime code.

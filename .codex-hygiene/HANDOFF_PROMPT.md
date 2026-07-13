@@ -2,12 +2,12 @@
 
 ## User Goal
 
-Build an intent-driven BlochCraft learning experience where a learner starts
-from what they want to cause and opens the free Lab in a separate window.
+Remove the rejected Quest prototype and make the three-qubit circuit editor
+substantially more complete.
 
 ## Current Task
 
-Have the user try the calm, explanatory Lab-first purpose flow and refine its Japanese wording.
+Audit and agree on the circuit editor command set before expanding it.
 
 ## Hard Constraints
 
@@ -26,14 +26,10 @@ Have the user try the calm, explanatory Lab-first purpose flow and refine its Ja
 - Post-edit Node tests pass 5/5 and `git diff --check` is clean.
 - Initial project checkpoint is commit `c554877`.
 - Remote branch `agent/blochcraft-v0-4` and draft PR #1 are published.
-- Quest 01 and Lab are separate windows connected with same-origin postMessage.
-- Browser automation verified H(A), CNOT(A->B) produces MISSION COMPLETE.
-- Node tests pass 6/6 including Quest evaluation.
-- Lab is the initial screen; three purpose paths appear at the bottom.
-- One shared Quest window switches its content and evaluator by selected purpose.
-- User explicitly chose a calm guide voice; avoid game-like or child-directed wording.
-- Purpose window now follows phenomenon -> how to proceed -> conditions -> current result -> clue.
-- Nonfunctional return-to-Lab button was removed.
+- User explicitly rejected and deleted the Quest direction.
+- Current editor supports only a partial gate set: RY fixed angles, X, Z, H,
+  all six directed CNOT pairs, one fixed Toffoli, delete, and clear-all.
+- Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched
 
@@ -46,9 +42,9 @@ Validation and GitHub publication are complete. Draft PR #1 targets `main`:
 
 ## Next Actions
 
-1. Push the calm explanatory structure to draft PR #1.
-2. Ask the user to try it and follow wording refinements directly.
-3. Keep the agreed structure and do not replace purpose paths with a syllabus.
+1. Verify the deletion and run the remaining tests.
+2. Agree on the editor command categories and first expansion slice.
+3. Do not restore Quest work unless explicitly requested.
 
 ## Do Not Assume
 
