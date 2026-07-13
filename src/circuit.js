@@ -55,6 +55,7 @@ export function initCircuit({onSelect,onState,onCircuit}){
     const clear=document.createElement("button");clear.textContent="全部消す";clear.onclick=()=>{columns=Array.from({length:8},blank);selectedColumn=-1;render()};toolBox.append(clear);
     const tool=tools.find(item=>item.id===selected),meaning=document.getElementById("circuit-tool-meaning");
     const marks=[-360,-270,-180,-90,-45,0,45,90,180,270,360];
+    meaning.classList.toggle("has-angle-editor",tool.type==="rotation");
     meaning.innerHTML=`<strong>${tool.label}</strong><span>球体上の意味：${tool.sphere}</span>${tool.type==="rotation"?`<div class="angle-editor"><label class="angle-number">回転角 <input id="circuit-angle" type="number" min="-360" max="360" step="1" value="${selectedAngle}"><span>°</span></label><input id="circuit-angle-slider" type="range" min="-360" max="360" step="1" value="${selectedAngle}" list="circuit-angle-marks"><datalist id="circuit-angle-marks">${marks.map(value=>`<option value="${value}"></option>`).join("")}</datalist><div class="angle-presets" aria-label="代表的な回転角">${marks.map(value=>`<button type="button" data-angle="${value}" class="${value===selectedAngle?"active":""}">${value}°</button>`).join("")}</div></div>`:""}`;
     const number=meaning.querySelector("#circuit-angle"),slider=meaning.querySelector("#circuit-angle-slider");
     if(number&&slider){

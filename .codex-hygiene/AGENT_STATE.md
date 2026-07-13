@@ -69,6 +69,10 @@ standard single-qubit gates.
   fine-grained number input, and 11 clickable representative angles.
 - Browser automation verified preset −90°, slider 137°, number −22°,
   placed `RZ(−22°)`, and matching Qiskit output.
+- User screenshot exposed rotation-control overflow and vertically collapsed
+  description text at a 1067 px viewport.
+- Rotation tool layout now uses a two-row grid; browser geometry at 1067 px
+  verifies all 11 presets inside the card and no page/card horizontal overflow.
 
 ## Current Blockers
 
@@ -76,8 +80,8 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push the synchronized rotation-angle editor.
-2. Let the user inspect the control layout.
+1. Commit and push the verified responsive angle-control layout.
+2. Let the user inspect the corrected control layout.
 3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated

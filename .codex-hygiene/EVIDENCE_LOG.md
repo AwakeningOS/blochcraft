@@ -111,3 +111,11 @@
 - Evidence: Browser automation reported range `{min:-360,max:360,step:1}`, 11 representative-angle buttons, preset −90° syncing number/slider/active state, slider 137° syncing number, number −22° syncing slider, placed label `RZ(−22°)`, and matching Qiskit code. Node tests passed 5/5.
 - Files: `src/circuit.js`, `src/learning.css`, docs.
 - Result: Learners can set coarse standard angles quickly or enter fine angles precisely without the controls drifting apart.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Fixed angle-editor overflow and collapsed description text from the user's screenshot.
+- Evidence: At viewport width 1067, browser geometry reported card client/scroll width both 999, description width 922 and normal one-line height, final preset right edge 1017 within card right edge 1029, and no document horizontal overflow. Node tests passed 5/5.
+- Files: `src/circuit.js`, `src/learning.css`.
+- Result: Rotation description occupies the top row; the full-width slider and wrapping representative angles occupy the second row without leaving the panel.

@@ -35,6 +35,8 @@ Continue expanding the verified complex-amplitude three-qubit editor.
   and matching Qiskit output.
 - RX/RY/RZ use synchronized number, −360°..360° slider, and 11 clickable
   representative-angle controls; browser synchronization is verified.
+- Responsive angle layout is verified at 1067 px with no card/page overflow;
+  this fixes a user-provided screenshot showing collapsed text and clipping.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched
