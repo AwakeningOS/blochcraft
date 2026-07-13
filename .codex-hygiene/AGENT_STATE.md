@@ -2,11 +2,13 @@
 
 ## Current User Goal
 
-Continue the existing BlochCraft work in this repository.
+Develop BlochCraft as an intent-driven learning experience: start from what
+the learner wants to cause, then use the Lab in a separate window and refine
+the prototype from user feedback.
 
 ## Current Task
 
-Select the next BlochCraft roadmap feature after publishing the validated v0.4 checkpoint.
+Deliver the first separate-window Quest prototype for user refinement.
 
 ## Hard Constraints
 
@@ -34,6 +36,11 @@ Select the next BlochCraft roadmap feature after publishing the validated v0.4 c
 - Post-documentation tests passed 5/5; `git diff --check` found no errors.
 - Initial project checkpoint commit is `c554877`.
 - Branch `agent/blochcraft-v0-4` is pushed and draft PR #1 is open.
+- Quest 01 asks the learner to share a secret signal between A and B without
+  presenting a gate syllabus first.
+- Automated browser interaction verified Quest -> Lab opening, live circuit
+  state transfer, and `MISSION COMPLETE` after H(A), CNOT(A->B).
+- Node tests pass 6/6 including the quest evaluator.
 
 ## Current Blockers
 
@@ -41,9 +48,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Review and merge draft PR #1 when ready.
-2. Select the next roadmap feature.
-3. Preserve the tested v0.4 baseline while implementing it.
+1. Commit and push the Quest prototype to draft PR #1.
+2. Let the user interact with the prototype and collect refinement requests.
+3. Preserve Lab freedom while iterating on the purpose-driven Quest window.
 
 ## Last Updated
 

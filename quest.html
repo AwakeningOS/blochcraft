@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BlochCraft Quest — 何を起こしたい？</title>
+  <link rel="stylesheet" href="src/quest.css">
+</head>
+<body>
+  <main class="quest-shell">
+    <header>
+      <p class="eyebrow">BlochCraft Quest 01</p>
+      <h1>離れた二つの球に、<br>同じ秘密の合図を持たせたい。</h1>
+      <p class="lead">南北どちらが出るかは決まっていない。でもAとBを測ると、必ず同じ合図が出る。そんな回路を作ってみよう。
+      </p>
+    </header>
+
+    <section class="mission-card">
+      <div class="mission-visual" aria-label="AとBが同じ結果を共有する">
+        <span class="orb orb-a">A</span><span class="link">• • •</span><span class="orb orb-b">B</span>
+      </div>
+      <div class="conditions">
+        <div id="condition-random"><span>○</span><p><strong>結果は一つに決めない</strong><small>北北と南南の両方が現れる</small></p></div>
+        <div id="condition-together"><span>○</span><p><strong>AとBは必ず同じ結果</strong><small>北南、南北は現れない</small></p></div>
+        <div id="condition-calm"><span>○</span><p><strong>Cはそっとしておく</strong><small>Cは北のまま</small></p></div>
+      </div>
+    </section>
+
+    <section id="feedback" class="feedback waiting">
+      <p class="status-label">LABとつながっていません</p>
+      <h2>BlochCraft Labで試してみよう。</h2>
+      <p id="feedback-text">答えの回路は表示しません。回路を変えるたび、ここに現象の変化が返ってきます。</p>
+    </section>
+
+    <div class="actions">
+      <button id="open-lab">実験台を別ウィンドウで開く ↗</button>
+      <button id="hint" class="secondary">小さなヒント</button>
+    </div>
+    <p id="hint-text" class="hint" hidden></p>
+  </main>
+  <script type="module" src="src/quest.js"></script>
+</body>
+</html>

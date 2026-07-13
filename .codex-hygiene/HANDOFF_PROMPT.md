@@ -2,11 +2,12 @@
 
 ## User Goal
 
-Continue BlochCraft development.
+Build an intent-driven BlochCraft learning experience where a learner starts
+from what they want to cause and opens the free Lab in a separate window.
 
 ## Current Task
 
-Review/merge draft PR #1 and select the next roadmap feature.
+Have the user try Quest 01 and refine it from direct feedback.
 
 ## Hard Constraints
 
@@ -25,6 +26,9 @@ Review/merge draft PR #1 and select the next roadmap feature.
 - Post-edit Node tests pass 5/5 and `git diff --check` is clean.
 - Initial project checkpoint is commit `c554877`.
 - Remote branch `agent/blochcraft-v0-4` and draft PR #1 are published.
+- Quest 01 and Lab are separate windows connected with same-origin postMessage.
+- Browser automation verified H(A), CNOT(A->B) produces MISSION COMPLETE.
+- Node tests pass 6/6 including Quest evaluation.
 
 ## Files Touched
 
@@ -37,9 +41,9 @@ Validation and GitHub publication are complete. Draft PR #1 targets `main`:
 
 ## Next Actions
 
-1. Review and merge draft PR #1 when ready.
-2. Select the next roadmap feature.
-3. Preserve the tested v0.4 baseline while implementing it.
+1. Push the Quest prototype to draft PR #1.
+2. Ask the user to try it and follow their refinement direction.
+3. Do not replace the purpose-first design with a conventional syllabus.
 
 ## Do Not Assume
 

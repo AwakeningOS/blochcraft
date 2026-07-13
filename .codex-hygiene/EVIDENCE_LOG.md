@@ -55,3 +55,11 @@
 - Evidence: `git push` created remote branch `agent/blochcraft-v0-4`; `gh pr create --draft` returned `https://github.com/AwakeningOS/blochcraft/pull/1`.
 - Files: Commits on `agent/blochcraft-v0-4`.
 - Result: BlochCraft v0.4 is available on GitHub in draft PR #1 targeting `main`.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Implemented and browser-tested the first intent-driven separate-window Quest.
+- Evidence: 6/6 Node tests passed. Chrome DevTools automation opened `quest.html`, clicked the Lab launcher, created H(A) then CNOT(A->B), and returned `{status: "MISSION COMPLETE", passed: 3}` from the Quest window.
+- Files: `quest.html`, `src/quest.js`, `src/quest-engine.js`, `src/quest.css`, `src/app.js`, `index.html`, `tests/quest-engine.test.mjs`
+- Result: Quest and Lab communicate in real time; the secret-signal mission detects its three outcome conditions without exposing the answer circuit upfront.
