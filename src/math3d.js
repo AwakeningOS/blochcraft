@@ -39,5 +39,7 @@ export function project(v, cx, cy, radius, yaw, pitch = 0) {
   const cp = Math.cos(pitch), sp = Math.sin(pitch);
   const z2 = v.z * cp - depth1 * sp;
   const depth2 = v.z * sp + depth1 * cp;
-  return { x: cx + radius * x1, y: cy - radius * z2, depth: depth2 };
+  // The renderer treats negative depth as the visible (camera-facing) side.
+  // Positive Bloch Y is 表 |+i⟩, so it must be camera-facing at yaw=0.
+  return { x: cx + radius * x1, y: cy - radius * z2, depth: -depth2 };
 }
