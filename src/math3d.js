@@ -34,12 +34,13 @@ export function startVector(frontBackDegrees, eastWestDegrees) {
 
 export function project(v, cx, cy, radius, yaw, pitch = 0) {
   const cyaw = Math.cos(yaw), syaw = Math.sin(yaw);
-  const x1 = v.x * cyaw - v.y * syaw;
-  const depth1 = v.x * syaw + v.y * cyaw;
+  // Screen-space front/back is mirrored so +Y (表 |+i⟩) is the near side.
+  // X (east/west) and Z (north/south) are intentionally unchanged.
+  const viewY = -v.y;
+  const x1 = v.x * cyaw - viewY * syaw;
+  const depth1 = v.x * syaw + viewY * cyaw;
   const cp = Math.cos(pitch), sp = Math.sin(pitch);
   const z2 = v.z * cp - depth1 * sp;
   const depth2 = v.z * sp + depth1 * cp;
-  // The renderer treats negative depth as the visible (camera-facing) side.
-  // Positive Bloch Y is 表 |+i⟩, so it must be camera-facing at yaw=0.
-  return { x: cx + radius * x1, y: cy - radius * z2, depth: -depth2 };
+  return { x: cx + radius * x1, y: cy - radius * z2, depth: depth2 };
 }

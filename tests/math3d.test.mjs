@@ -16,6 +16,7 @@ assert.ok(project(vec(0,-1,0),0,0,1,0,0).depth>0,"裏 |−i⟩ must be camera-aw
 const frontAtDefaultView=project(vec(0,1,0),0,0,1,25*DEG,-8*DEG);
 const backAtDefaultView=project(vec(0,-1,0),0,0,1,25*DEG,-8*DEG);
 assert.ok(frontAtDefaultView.depth<backAtDefaultView.depth,"表 |+i⟩ must be layered in front of 裏 |−i⟩");
+assert.ok(frontAtDefaultView.x>backAtDefaultView.x,"only the displayed front/back axis must be mirrored");
 
 const arbitrary = startVector(65, 40);
 const afterH = rotate(arbitrary, axisVector("h"), Math.PI);

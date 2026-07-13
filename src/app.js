@@ -117,8 +117,7 @@ function draw() {
     let dx=point.x-cx,dy=point.y-cy,length=Math.hypot(dx,dy);
     if(length<1){dx=label.startsWith("表")?1:-1;dy=label.startsWith("表")?-.35:.35;length=Math.hypot(dx,dy)}
     const text={x:cx+(radius+82)*dx/length,y:cy+(radius+82)*dy/length};
-    const front=point.depth<0,opacity=front?1:.3,dash=front?"":'stroke-dasharray="4,4"';
-    svg += `<circle cx="${point.x}" cy="${point.y}" r="4.5" fill="${color}" opacity="${opacity}"/><line x1="${point.x}" y1="${point.y}" x2="${text.x}" y2="${text.y}" stroke="${color}" opacity="${front?.65:.25}" ${dash}/><text x="${text.x}" y="${text.y+6}" font-size="18" font-weight="700" fill="${color}" opacity="${opacity}" text-anchor="middle">${label}</text>`;
+    svg += `<circle cx="${point.x}" cy="${point.y}" r="4.5" fill="${color}"/><line x1="${point.x}" y1="${point.y}" x2="${text.x}" y2="${text.y}" stroke="${color}" opacity=".55"/><text x="${text.x}" y="${text.y+6}" font-size="18" font-weight="700" fill="${color}" text-anchor="middle">${label}</text>`;
   }
 
   const axisA = project(axis, cx, cy, radius * 1.32, yaw, pitch), axisB = project(opposite(axis), cx, cy, radius * 1.32, yaw, pitch);
