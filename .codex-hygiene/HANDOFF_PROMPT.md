@@ -6,7 +6,7 @@ BlochCraftを使った量子回路プログラミングの連載を書く。目�
 
 ## Current Task
 
-`docs/series/quantum-circuit-ai/`を起点に連載を制作する。最初は第1回の構成と本文。
+`docs/series/quantum-circuit-ai/`を起点に連載を制作する。第1回初稿のユーザーレビューを反映する。
 
 ## Hard Constraints
 
@@ -30,13 +30,13 @@ BlochCraftを使った量子回路プログラミングの連載を書く。目�
 
 ## Current Status
 
-連載制作へ移行。アプリの追加開発は、記事制作中に見つかった具体的な不便がある場合だけ行う。
+第1回初稿は`articles/01-programming-possibilities.md`に存在し、約5,000字。内容はユーザーレビュー待ち。アプリの追加開発は、記事制作中に見つかった具体的な不便がある場合だけ行う。
 
 ## Next Actions
 
-1. `SERIES_STATE.md`を読む。
-2. 第1回の構成案をユーザーへ提示する。
-3. ユーザーの語り口を反映して本文を書く。
+1. `SERIES_STATE.md`と第1回初稿を読む。
+2. ユーザーの具体的な修正指示を優先する。
+3. 修正後も中心思想と編集指針から外れていないか確認する。
 
 ## Do Not Assume
 

@@ -1,5 +1,13 @@
 # Evidence Log
 
+## Evidence Entry: 第1回初稿
+
+- Time: 2026-07-13 JST
+- Action: 第1回「可能性をプログラムするとは何か」の公開用初稿を執筆し、構造と禁止表現を点検。
+- Evidence: `wc`で313行・5030文字、見出し一覧、禁止語検索、`git diff --check`成功。
+- Files: `docs/series/quantum-circuit-ai/articles/01-programming-possibilities.md`
+- Result: X、H、H→H、Qiskit、AI依頼例、用途発想まで含む初稿が存在する。内容の承認は未取得。
+
 ## Evidence Entry: 連載制作構造
 
 - Time: 2026-07-13 JST
