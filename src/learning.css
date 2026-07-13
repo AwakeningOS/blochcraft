@@ -43,3 +43,12 @@
 .column-number:hover,.column-number.selected-column { border-color:var(--accent); color:var(--accent); background:var(--accent-bg); }
 .column-corner { min-height:28px; }
 .step-row p { margin:7px 0 0; color:var(--muted); font-size:12px; }
+.relationship-card p { margin:3px 0 7px; line-height:1.55; font-size:12px; }
+.plain-reading { display:grid; gap:2px; padding-top:6px; border-top:1px solid var(--border); }
+.plain-reading span,.relationship-card summary,.relationship-card dt { color:var(--muted); font-size:11px; }
+.plain-reading b { font-size:12px; }
+.relationship-card details { margin-top:5px; padding-top:5px; border-top:1px solid var(--border); }
+.relationship-card summary { cursor:pointer; }
+.relationship-card dl { display:grid; gap:4px; margin:7px 0 0; }
+.relationship-card dl div { display:flex; justify-content:space-between; gap:8px; font-size:11px; }
+.relationship-card dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; }

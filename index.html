@@ -93,14 +93,14 @@
 
   <section class="relationship-shell" aria-labelledby="relationship-title">
     <div class="section-heading">
-      <div><p class="eyebrow">Relationship vault</p><h2 id="relationship-title">単体球と関係金庫</h2></div>
+      <div><p class="eyebrow">One qubit at a time</p><h2 id="relationship-title">量子ビットを1個ずつ見る</h2></div>
       <span class="badge">回路の途中状態と同期</span>
     </div>
-    <p class="circuit-help">白矢印の長さ＝その量子ビット単体で見える状態。短くなった分は消えたのではなく、その量子ビットと残り全体の関係へ移っています。色付き破線と数字0〜8は、回路開始時から各列を実行した後までの軌跡です。</p>
+    <p class="circuit-help">A・B・Cを1個ずつ取り出して見ます。白い矢印が短いとき、情報が消えたのではなく、その量子ビットだけでは状態を説明できず、ほかの量子ビットとの組み合わせを見る必要があります。色付き破線と数字は、回路の各列の後に状態がどう変わったかを示します。</p>
     <div class="relationship-toolbar"><span>3球体をマウス長押しドラッグ／指ドラッグで同時に回転できます。</span><button id="relationship-reset-view">視点を戻す</button></div>
-    <svg id="relationship-view" viewBox="0 0 1080 430" width="100%" role="img" aria-label="A、B、Cの単体球と関係金庫"></svg>
+    <svg id="relationship-view" viewBox="0 0 1080 430" width="100%" role="img" aria-label="A、B、Cを1個ずつ見た状態と、ほかの量子ビットとの結びつき"></svg>
     <div id="relationship-cards" class="relationship-cards"></div>
-    <div class="relationship-caution">関係金庫は「AとBだけ」と決めつけず、A対残り全体・B対残り全体・C対残り全体として表示します。3つ子状態でも誤解しないための表現です。</div>
+    <div class="relationship-caution">「ほかとの結びつき」は、AならAとB・C全体、BならBとA・C全体という見方です。詳しい数値は、純粋な3量子ビット状態を前提に計算しています。</div>
   </section>
 
   <section class="learning-shell" aria-labelledby="measurement-title">

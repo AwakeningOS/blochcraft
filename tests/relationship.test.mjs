@@ -5,11 +5,11 @@ const close=(actual,expected,label)=>assert.ok(Math.abs(actual-expected)<1e-10,`
 
 let state=[1,0,0,0,0,0,0,0];
 let metrics=relationshipMetrics(state);
-metrics.forEach((m)=>{close(m.visible,1,`${m.name} product visible`);close(m.vault,0,`${m.name} product vault`)});
+metrics.forEach((m)=>{close(m.visible,1,`${m.name} product visible`);close(m.vault,0,`${m.name} product vault`);close(m.purity,1,`${m.name} product purity`);close(m.entropy,0,`${m.name} product entropy`)});
 
 state=[Math.SQRT1_2,0,0,0,0,0,Math.SQRT1_2,0];
 metrics=relationshipMetrics(state);
-close(metrics[0].vault,1,"Bell A vault");close(metrics[1].vault,1,"Bell B vault");close(metrics[2].vault,0,"Bell C vault");
+close(metrics[0].vault,1,"Bell A vault");close(metrics[1].vault,1,"Bell B vault");close(metrics[2].vault,0,"Bell C vault");close(metrics[0].purity,.5,"Bell A purity");close(metrics[0].entropy,1,"Bell A entropy");
 
 state=[Math.SQRT1_2,0,0,0,0,0,0,Math.SQRT1_2];
 metrics=relationshipMetrics(state);
