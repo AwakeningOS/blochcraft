@@ -40,6 +40,8 @@ Continue expanding the verified complex-amplitude three-qubit editor.
 - Editor rotation angle drives upper-sphere rotation; a selected circuit
   operation uses the target qubit's pre-column Bloch vector as its start.
 - Manual start sliders clear the circuit-derived start and remain usable.
+- Editor buttons again update the upper Operation select, badge, and sphere;
+  RX/RY/RZ and all six CNOT directions have exact select entries.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched

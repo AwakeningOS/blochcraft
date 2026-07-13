@@ -127,3 +127,11 @@
 - Evidence: Browser automation reported editor RY 137° -> viewer rotation 137°; after H(A), placing RY(A,90°) set viewer start outputs to `回路` and position `X 1.000 / Y 0.000 / Z 0.000`; moving the manual start slider to 30° restored numeric manual outputs. Node tests passed 5/5.
 - Files: `src/circuit.js`, `src/app.js`, docs.
 - Result: Gate angle and actual circuit prestate drive the sphere automatically, while manual start-position controls remain available as an explicit override.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Restored the editor button to upper Operation-select synchronization after a user-reported regression.
+- Evidence: Browser automation verified editor buttons X, S†, RX/RY/RZ, CNOT A->B, and Toffoli update the select and badge; RY slider 123° updates viewer rotation; exact-direction checks returned select `cx10` / CNOT B->A and `cx21` / CNOT C->B. Node tests passed 5/5.
+- Files: `src/gates.js`, `src/app.js`.
+- Result: Editor operation choice, upper Operation select, badge, sphere axis/angle, and directed-control description change together again.

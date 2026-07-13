@@ -11,7 +11,10 @@ export const gates = [
   { id: "sdg", sphere: "南北軸 −90°位相回転", standard: "S†", axis: "z", angle: -90 },
   { id: "t", sphere: "南北軸 +45°位相回転", standard: "T", axis: "z", angle: 45 },
   { id: "tdg", sphere: "南北軸 −45°位相回転", standard: "T†", axis: "z", angle: -45 },
-  { id: "cx", sphere: "条件付き東西軸回転 A→B", standard: "CNOT A→B", axis: "x", angle: 180, controls: ["A"], target: "B" },
+  { id: "rx", sphere: "東西軸の角度指定回転", standard: "RX(θ)", axis: "x", angle: 90 },
+  { id: "ry", sphere: "表裏軸の角度指定回転", standard: "RY(θ)", axis: "y", angle: 90 },
+  { id: "rz", sphere: "南北軸の角度指定回転", standard: "RZ(θ)", axis: "z", angle: 90 },
+  ...[["A","B"],["B","A"],["A","C"],["C","A"],["B","C"],["C","B"]].map(([control,target],index)=>({ id:`cx${[[0,1],[1,0],[0,2],[2,0],[1,2],[2,1]][index].join("")}`, sphere:`条件付き東西軸回転 ${control}→${target}`, standard:`CNOT ${control}→${target}`, axis:"x", angle:180, controls:[control], target })),
   { id: "ccx", sphere: "2条件付き東西軸回転 A・B→C", standard: "Toffoli (CCNOT) A,B→C", axis: "x", angle: 180, controls: ["A", "B"], target: "C" },
 ];
 

@@ -183,6 +183,8 @@ initCircuit({
     const axes={rx:"x",x:"x",cx:"x",ccx:"x",ry:"y",y:"y",rz:"z",z:"z",s:"z",sdg:"z",t:"z",tdg:"z",h:"h"};
     const angles={x:180,y:180,z:180,h:180,s:90,sdg:-90,t:45,tdg:-45,cx:180,ccx:180};
     circuitGateOverride={id:operation.id||operation.kind,standard:operation.label||operation.kind.toUpperCase(),sphere:operation.sphere||"回路エディターの操作",axis:axes[operation.kind]||"y",angle:operation.angle??angles[operation.kind]??90,...(operation.kind==="cx"?{controls:["control"],target:"target"}:{})};
+    const operationTabId=operation.id||operation.kind;
+    if(gates.some(gate=>gate.id===operationTabId))ui.gate.value=operationTabId;
     if(source==="circuit"&&startState){const summary=reducedSummary(startState,target);circuitStartOverride=vec(summary.x,summary.y,summary.z)}
     ui.progress.value = 0;
     draw();

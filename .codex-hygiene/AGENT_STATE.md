@@ -80,6 +80,12 @@ standard single-qubit gates.
 - Touching either manual start slider clears the circuit-derived start state.
 - Browser verified RY 137° sync, H(A)->RY(A) start `(1,0,0)`, and manual
   slider restoration to 30°.
+- A regression left the upper Operation select visually unchanged while the
+  sphere itself followed editor selections; the user reported it immediately.
+- Operation select synchronization is restored for every editor tool,
+  including explicit RX/RY/RZ entries and all six directed CNOT entries.
+- Browser verified X, S†, RX/RY/RZ, CNOT, Toffoli, RY 123°, and exact CNOT
+  directions B->A and C->B across editor button, select, badge, and sphere.
 
 ## Current Blockers
 
@@ -87,8 +93,8 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push circuit-to-sphere angle/start-state synchronization.
-2. Let the user inspect the synchronized sphere behavior.
+1. Commit and push restored editor-to-Operation-select synchronization.
+2. Let the user inspect the complete synchronization behavior.
 3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated
