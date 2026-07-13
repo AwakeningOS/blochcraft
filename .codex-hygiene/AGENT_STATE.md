@@ -36,13 +36,13 @@ Select the next BlochCraft roadmap feature after the validated v0.4 checkpoint.
 
 ## Current Blockers
 
-GitHub CLI authentication is invalid; remote publication requires `gh auth login`.
+None.
 
 ## Next 1-3 Actions
 
-1. Commit the final whitespace cleanup on `agent/blochcraft-v0-4`.
-2. Re-authenticate GitHub CLI.
-3. Push the branch and open a draft PR to `main`.
+1. Push `agent/blochcraft-v0-4`.
+2. Open a draft PR to `main`.
+3. Confirm the remote publication.
 
 ## Last Updated
 

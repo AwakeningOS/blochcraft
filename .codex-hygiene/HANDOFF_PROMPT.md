@@ -31,13 +31,13 @@ Select the next roadmap feature after the validated v0.4 checkpoint.
 
 ## Current Status
 
-Validation and the initial checkpoint commit are complete. GitHub CLI auth is
-invalid, so push and draft PR creation are pending re-authentication.
+Validation and the initial checkpoint commit are complete. GitHub CLI is
+authenticated as AwakeningOS; push and draft PR creation are next.
 
 ## Next Actions
 
-1. Run `gh auth login -h github.com` and confirm `gh auth status` succeeds.
-2. Push `agent/blochcraft-v0-4` and open a draft PR to `main`.
+1. Push `agent/blochcraft-v0-4` and open a draft PR to `main`.
+2. Confirm the remote publication.
 3. Preserve the tested v0.4 baseline while selecting the next roadmap feature.
 
 ## Do Not Assume

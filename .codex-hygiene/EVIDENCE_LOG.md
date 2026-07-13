@@ -39,3 +39,11 @@
 - Evidence: `origin` is `https://github.com/AwakeningOS/blochcraft.git`; `gh auth status` reports the AwakeningOS token is invalid.
 - Files: Git remote configuration.
 - Result: Local commits can continue, but push/PR publication is blocked until `gh auth login -h github.com` succeeds.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Completed GitHub CLI web authentication.
+- Evidence: `gh auth login` reported `Authentication complete` and `Logged in as AwakeningOS`.
+- Files: GitHub CLI authentication configuration.
+- Result: Publication blocker cleared; push and draft PR are authorized.
