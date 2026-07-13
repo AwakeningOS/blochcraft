@@ -6,7 +6,7 @@ Continue the existing BlochCraft work in this repository.
 
 ## Current Task
 
-Select the next BlochCraft roadmap feature after the validated v0.4 checkpoint.
+Select the next BlochCraft roadmap feature after publishing the validated v0.4 checkpoint.
 
 ## Hard Constraints
 
@@ -33,6 +33,7 @@ Select the next BlochCraft roadmap feature after the validated v0.4 checkpoint.
 - README and roadmap now reflect verified implementation status.
 - Post-documentation tests passed 5/5; `git diff --check` found no errors.
 - Initial project checkpoint commit is `c554877`.
+- Branch `agent/blochcraft-v0-4` is pushed and draft PR #1 is open.
 
 ## Current Blockers
 
@@ -40,9 +41,9 @@ None.
 
 ## Next 1-3 Actions
 
-1. Push `agent/blochcraft-v0-4`.
-2. Open a draft PR to `main`.
-3. Confirm the remote publication.
+1. Review and merge draft PR #1 when ready.
+2. Select the next roadmap feature.
+3. Preserve the tested v0.4 baseline while implementing it.
 
 ## Last Updated
 

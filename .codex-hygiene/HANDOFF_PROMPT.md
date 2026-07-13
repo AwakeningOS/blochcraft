@@ -6,7 +6,7 @@ Continue BlochCraft development.
 
 ## Current Task
 
-Select the next roadmap feature after the validated v0.4 checkpoint.
+Review/merge draft PR #1 and select the next roadmap feature.
 
 ## Hard Constraints
 
@@ -24,6 +24,7 @@ Select the next roadmap feature after the validated v0.4 checkpoint.
 - README and roadmap were reconciled with the source.
 - Post-edit Node tests pass 5/5 and `git diff --check` is clean.
 - Initial project checkpoint is commit `c554877`.
+- Remote branch `agent/blochcraft-v0-4` and draft PR #1 are published.
 
 ## Files Touched
 
@@ -31,14 +32,14 @@ Select the next roadmap feature after the validated v0.4 checkpoint.
 
 ## Current Status
 
-Validation and the initial checkpoint commit are complete. GitHub CLI is
-authenticated as AwakeningOS; push and draft PR creation are next.
+Validation and GitHub publication are complete. Draft PR #1 targets `main`:
+`https://github.com/AwakeningOS/blochcraft/pull/1`.
 
 ## Next Actions
 
-1. Push `agent/blochcraft-v0-4` and open a draft PR to `main`.
-2. Confirm the remote publication.
-3. Preserve the tested v0.4 baseline while selecting the next roadmap feature.
+1. Review and merge draft PR #1 when ready.
+2. Select the next roadmap feature.
+3. Preserve the tested v0.4 baseline while implementing it.
 
 ## Do Not Assume
 

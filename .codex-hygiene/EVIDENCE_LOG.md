@@ -47,3 +47,11 @@
 - Evidence: `gh auth login` reported `Authentication complete` and `Logged in as AwakeningOS`.
 - Files: GitHub CLI authentication configuration.
 - Result: Publication blocker cleared; push and draft PR are authorized.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Published the validated v0.4 checkpoint.
+- Evidence: `git push` created remote branch `agent/blochcraft-v0-4`; `gh pr create --draft` returned `https://github.com/AwakeningOS/blochcraft/pull/1`.
+- Files: Commits on `agent/blochcraft-v0-4`.
+- Result: BlochCraft v0.4 is available on GitHub in draft PR #1 targeting `main`.
