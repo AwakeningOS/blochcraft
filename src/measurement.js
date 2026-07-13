@@ -1,7 +1,7 @@
 import { project as rawProject, rotate, vec } from "./math3d.js";
 import { asComplex } from "./complex.js";
 import { reducedSummary } from "./circuit.js";
-const QUBITS=["A","B","C"],DEG=Math.PI/180,QUBIT_COLORS=["#d9a900","#ef233c","#9b4f00"],FILTER_SCALE=92/125,filterCamera={yaw:25*Math.PI/180,pitch:-8*Math.PI/180};
+const QUBITS=["A","B","C"],DEG=Math.PI/180,QUBIT_COLORS=["#d9a900","#ef233c","#9b4f00"],FILTER_SCALE=92/125,filterCamera={yaw:-25*Math.PI/180,pitch:-8*Math.PI/180};
 function project(v,cx,cy,r){return rawProject(v,cx,cy,r*FILTER_SCALE,filterCamera.yaw,filterCamera.pitch)}
 function cmul(a,b){return{re:a.re*b.re-a.im*b.im,im:a.re*b.im+a.im*b.re}}
 function overlap(theta,phi,out,input){const h=theta*DEG/2,c=Math.cos(h),s=Math.sin(h),p=phi*DEG;if(!out)return input?{re:s*Math.cos(p),im:-s*Math.sin(p)}:{re:c,im:0};return input?{re:c*Math.cos(p),im:-c*Math.sin(p)}:{re:-s,im:0}}
@@ -30,5 +30,5 @@ export function initMeasurement({onFilters}){const holder=document.getElementByI
   filterSvg.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,yaw:filterCamera.yaw,pitch:filterCamera.pitch};filterSvg.setPointerCapture(e.pointerId);filterSvg.classList.add("dragging")});
   filterSvg.addEventListener("pointermove",e=>{if(!drag)return;filterCamera.yaw=drag.yaw+(e.clientX-drag.x)*.008;filterCamera.pitch=drag.pitch-(e.clientY-drag.y)*.008;render()});
   const endDrag=()=>{drag=null;filterSvg.classList.remove("dragging")};filterSvg.addEventListener("pointerup",endDrag);filterSvg.addEventListener("pointercancel",endDrag);
-  document.getElementById("filter-reset-view").onclick=()=>{filterCamera.yaw=25*DEG;filterCamera.pitch=-8*DEG;render()};
+  document.getElementById("filter-reset-view").onclick=()=>{filterCamera.yaw=-25*DEG;filterCamera.pitch=-8*DEG;render()};
   function measure(shots){const counts=sampleDistribution(render(),shots);document.getElementById("measurement-sample-title").textContent=`測定結果（${shots}回）`;samples.className="";samples.innerHTML=counts.map((count,i)=>row(count/shots,i,`${count}回`)).join("")}document.getElementById("measure-once").onclick=()=>measure(1);document.getElementById("measure-many").onclick=()=>measure(1000);render();onFilters?.(filters);return{update(next){state=[...next];render()}}}

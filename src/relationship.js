@@ -2,7 +2,7 @@ import { DEG, project, vec } from "./math3d.js";
 import { reducedSummary } from "./circuit.js";
 
 const NAMES=["A","B","C"],COLORS=["#d9a900","#ef233c","#9b4f00"];
-const camera={yaw:25*DEG,pitch:-8*DEG};
+const camera={yaw:-25*DEG,pitch:-8*DEG};
 let lastState=null,lastTargets=null,lastHistory=null,drag=null,installed=false;
 
 export function relationshipMetrics(state){
@@ -31,6 +31,6 @@ function sphere(metric,cx,cy,r,index,history){
   return s;
 }
 
-function installInteraction(svg,cards){if(installed)return;installed=true;svg.style.touchAction="none";svg.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,yaw:camera.yaw,pitch:camera.pitch};svg.setPointerCapture(e.pointerId);svg.classList.add("dragging")});svg.addEventListener("pointermove",e=>{if(!drag)return;camera.yaw=drag.yaw+(e.clientX-drag.x)*.008;camera.pitch=drag.pitch-(e.clientY-drag.y)*.008;renderRelationship(lastState,{svg,cards})});const end=()=>{drag=null;svg.classList.remove("dragging")};svg.addEventListener("pointerup",end);svg.addEventListener("pointercancel",end);document.getElementById("relationship-reset-view").onclick=()=>{camera.yaw=25*DEG;camera.pitch=-8*DEG;renderRelationship(lastState,{svg,cards})}}
+function installInteraction(svg,cards){if(installed)return;installed=true;svg.style.touchAction="none";svg.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,yaw:camera.yaw,pitch:camera.pitch};svg.setPointerCapture(e.pointerId);svg.classList.add("dragging")});svg.addEventListener("pointermove",e=>{if(!drag)return;camera.yaw=drag.yaw+(e.clientX-drag.x)*.008;camera.pitch=drag.pitch-(e.clientY-drag.y)*.008;renderRelationship(lastState,{svg,cards})});const end=()=>{drag=null;svg.classList.remove("dragging")};svg.addEventListener("pointerup",end);svg.addEventListener("pointercancel",end);document.getElementById("relationship-reset-view").onclick=()=>{camera.yaw=-25*DEG;camera.pitch=-8*DEG;renderRelationship(lastState,{svg,cards})}}
 
 export function renderRelationship(state,{svg,cards,history=lastHistory}){lastState=state;lastHistory=history;lastTargets={svg,cards};installInteraction(svg,cards);const metrics=relationshipMetrics(state),centers=[180,540,900],cy=165,r=92;let out='<defs><radialGradient id="rel-globe" cx="34%" cy="27%" r="72%"><stop offset="0%" stop-color="#fff" stop-opacity=".4"/><stop offset="100%" stop-color="#58728a" stop-opacity=".22"/></radialGradient><radialGradient id="rel-tip" cx="30%" cy="25%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#52616f"/></radialGradient></defs>';metrics.forEach((m,i)=>out+=sphere(m,centers[i],cy,r,i,history));svg.innerHTML=out;cards.innerHTML=metrics.map(m=>`<div class="relationship-card"><strong style="color:${m.color}">${m.name}</strong><span>単体矢印 ${(m.visible*100).toFixed(1)}%</span><span>関係金庫 ${(m.vault*100).toFixed(1)}%</span><small>北 |0⟩ ${(m.p0*100).toFixed(1)}% / 南 |1⟩ ${(m.p1*100).toFixed(1)}%</small></div>`).join("")}

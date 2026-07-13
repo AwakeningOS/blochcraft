@@ -13,6 +13,9 @@ close(startVector(180, 0), vec(0, 0, -1), "south preset");
 close(startVector(270, 0), vec(-1, 0, 0), "west preset");
 assert.ok(project(vec(0,1,0),0,0,1,0,0).depth<0,"表 |+i⟩ must be camera-facing");
 assert.ok(project(vec(0,-1,0),0,0,1,0,0).depth>0,"裏 |−i⟩ must be camera-away");
+const frontAtDefaultView=project(vec(0,1,0),0,0,1,-25*DEG,-8*DEG);
+const backAtDefaultView=project(vec(0,-1,0),0,0,1,-25*DEG,-8*DEG);
+assert.ok(frontAtDefaultView.x>backAtDefaultView.x,"表 |+i⟩ must appear on the foreground side of the default view");
 
 const arbitrary = startVector(65, 40);
 const afterH = rotate(arbitrary, axisVector("h"), Math.PI);

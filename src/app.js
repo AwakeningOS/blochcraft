@@ -12,7 +12,7 @@ const ui = {
   conditionRow: $("condition-row"), conditionHelp: $("condition-help"), facts: $("facts"),
 };
 let timer = null;
-const camera = { yaw: 25 * DEG, pitch: -8 * DEG };
+const camera = { yaw: -25 * DEG, pitch: -8 * DEG };
 let circuitGateOverride = null;
 let circuitStartOverride = null;
 
@@ -153,7 +153,7 @@ for (const element of [ui.progress,ui.condition]) element.addEventListener("inpu
 for (const button of document.querySelectorAll("[data-preset]")) button.addEventListener("click", () => preset(button.dataset.preset));
 $("play").onclick = () => { if (timer) return; if (+ui.progress.value >= 100) ui.progress.value = 0; timer = setInterval(() => { ui.progress.value = Math.min(100, +ui.progress.value + 1); draw(); if (+ui.progress.value >= 100) { clearInterval(timer); timer = null; } }, 25); };
 $("stop").onclick = () => { if (timer) clearInterval(timer); timer = null; };
-const resetSingleView = () => { camera.yaw = 25 * DEG; camera.pitch = -8 * DEG; draw(); };
+const resetSingleView = () => { camera.yaw = -25 * DEG; camera.pitch = -8 * DEG; draw(); };
 $("reset-view").onclick = resetSingleView;
 $("reset-view-controls").onclick = resetSingleView;
 
