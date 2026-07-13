@@ -1,4 +1,4 @@
-# AI時代の量子回路プログラミング連載
+# 量子回路プログラミング講座
 
 BlochCraftを使い、量子回路の動きを可視化しながら、その本質を理解するための連載制作フォルダーです。
 
@@ -16,4 +16,3 @@ BlochCraftを使い、量子回路の動きを可視化しながら、その本�
 
 - [BlochCraft公開アプリ](https://awakeningos.github.io/blochcraft/)
 - [GitHubリポジトリ](https://github.com/AwakeningOS/blochcraft)
-
