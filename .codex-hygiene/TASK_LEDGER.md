@@ -16,3 +16,4 @@
 | BC-12 | Responsive rotation-control layout | done_verified | 1067px geometry: last preset inside card; no horizontal overflow | Fix from user screenshot |
 | BC-13 | Circuit-to-sphere angle and start-state sync | done_verified | Browser RY137°; H->RY prestate east; manual slider restore | Manual start controls retained |
 | BC-14 | Restore editor-to-Operation-select sync | done_verified | Browser exact buttons/select/badge including six CNOT directions | Regression reported by user |
+| BC-15 | Variable circuit columns for three qubits | done_verified | Browser add/insert/delete; 16-column step+scroll; 5/5 tests | Initial 8, UI cap 64 |

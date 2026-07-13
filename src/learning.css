@@ -30,6 +30,14 @@
 .angle-presets { grid-column:1/-1; display:grid; grid-template-columns:repeat(auto-fit,minmax(58px,1fr)); gap:5px; width:100%; min-width:0; }
 .angle-presets button { padding:5px 3px; border-radius:6px; font-size:10px; font-variant-numeric:tabular-nums; }
 .state-row .amplitude { grid-column:2/4; color:var(--muted); font-size:10px; }
+.column-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#6c7b8b0d; }
+.column-buttons { display:flex; flex-wrap:wrap; gap:6px; }
+#circuit-column-stats { flex:none; color:var(--muted); font-size:12px; font-weight:800; font-variant-numeric:tabular-nums; }
 @media(max-width:700px) { .measurement-bases,.measurement-results { grid-template-columns:1fr; } .learning-shell { margin-inline:12px; } }
 @media(max-width:700px) { .tool-meaning.has-angle-editor,.angle-editor { grid-template-columns:1fr; }.angle-presets { grid-template-columns:repeat(4,1fr); }.angle-number { justify-content:flex-start; } }
+@media(max-width:700px) { .column-controls { align-items:flex-start; flex-direction:column; } }
 @media(prefers-color-scheme:dark) { .condition-help,.tool-meaning { background:#252c33 !important; color:#eef2f5 !important; border-color:#46515b !important; border-left-color:#e28a43 !important; }.tool-meaning strong,.condition-help strong { color:#f3f6f8 !important; }.tool-meaning span { color:#bdc6ce !important; } }
+.column-number { min-height:28px; padding:3px; border-color:transparent; font-size:11px; }
+.column-number:hover,.column-number.selected-column { border-color:var(--accent); color:var(--accent); background:var(--accent-bg); }
+.column-corner { min-height:28px; }
+.step-row p { margin:7px 0 0; color:var(--muted); font-size:12px; }

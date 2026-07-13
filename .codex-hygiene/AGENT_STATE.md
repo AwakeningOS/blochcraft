@@ -86,6 +86,13 @@ standard single-qubit gates.
   including explicit RX/RY/RZ entries and all six directed CNOT entries.
 - Browser verified X, S†, RX/RY/RZ, CNOT, Toffoli, RY 123°, and exact CNOT
   directions B->A and C->B across editor button, select, badge, and sphere.
+- User chose three qubits as the natural fixed width while allowing circuit
+  time/depth to grow beyond eight columns.
+- Editor now starts at 8 columns and supports +1/+4, insert before/after,
+  selected-column delete, column numbering, local horizontal scroll, and a
+  64-column UI cap.
+- Browser verified 8->12->13 insertion/deletion behavior and 8->16 expansion;
+  step max/value follow 16, circuit scrolls locally, page does not overflow.
 
 ## Current Blockers
 
@@ -93,8 +100,8 @@ None.
 
 ## Next 1-3 Actions
 
-1. Commit and push restored editor-to-Operation-select synchronization.
-2. Let the user inspect the complete synchronization behavior.
+1. Commit and push the three-qubit fixed-width, variable-column editor.
+2. Let the user inspect column controls and depth display.
 3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated

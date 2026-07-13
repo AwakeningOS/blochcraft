@@ -75,8 +75,16 @@
     <p class="circuit-help">部品を選び、A・B・Cのマスへ配置します。横線は量子ビットが左から右へ進む「量子ワイヤー」です。列を選ぶと、その操作が上の球体ビューワーへ同期します。</p>
     <div id="circuit-tools" class="circuit-tools"></div>
     <div id="circuit-tool-meaning" class="tool-meaning"></div>
-    <div id="circuit-grid" class="circuit-grid"></div>
-    <div class="step-row"><label>回路をここまで実行 <input id="circuit-step" type="range" min="0" max="8" step="1" value="8"><output id="circuit-step-out">8列目まで</output></label></div>
+    <div class="circuit-grid-wrap"><div id="circuit-grid" class="circuit-grid"></div></div>
+    <div class="column-controls" aria-label="回路列の編集">
+      <div class="column-buttons">
+        <button id="column-add-one">+1列</button><button id="column-add-four">+4列</button>
+        <button id="column-insert-before">選択列の前に挿入</button><button id="column-insert-after">選択列の後に挿入</button>
+        <button id="column-delete">選択列を削除</button>
+      </div>
+      <output id="circuit-column-stats"></output>
+    </div>
+    <div class="step-row"><label>状態を見る位置 <input id="circuit-step" type="range" min="0" max="8" step="1" value="8"><output id="circuit-step-out">最後まで</output></label><p>途中の列を選ぶと、その時点の量子状態を下に表示します。回路自体は変更されません。</p></div>
     <div class="circuit-results">
       <div><h3>可能性の表</h3><div id="state-table"></div></div>
       <div><h3>現在の操作</h3><div id="circuit-selection" class="selection-card">列をクリックしてください。</div><h3>単体状態</h3><div id="qubit-summary" class="qubit-summary"></div></div>
@@ -108,7 +116,7 @@
   </section>
   <section class="learning-shell" aria-labelledby="code-title">
     <div class="section-heading"><div><p class="eyebrow">Code bridge</p><h2 id="code-title">回路からQiskitコードへ</h2></div><button id="copy-code">コードをコピー</button></div>
-    <p class="circuit-help">上で「ここまで実行」にした列と、測定方向がそのままPython/Qiskitコードになります。</p>
+    <p class="circuit-help">上の「状態を見る位置」までの回路と、測定方向がPython/Qiskitコードになります。</p>
     <pre class="code-panel"><code id="qiskit-code"></code></pre>
   </section>
   <footer>BlochCraft v0.4 · MIT License · AwakeningOS</footer>

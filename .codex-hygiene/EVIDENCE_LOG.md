@@ -135,3 +135,11 @@
 - Evidence: Browser automation verified editor buttons X, S†, RX/RY/RZ, CNOT A->B, and Toffoli update the select and badge; RY slider 123° updates viewer rotation; exact-direction checks returned select `cx10` / CNOT B->A and `cx21` / CNOT C->B. Node tests passed 5/5.
 - Files: `src/gates.js`, `src/app.js`.
 - Result: Editor operation choice, upper Operation select, badge, sphere axis/angle, and directed-control description change together again.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Converted the fixed eight-column editor into a variable-column editor while keeping three qubits fixed.
+- Evidence: Browser automation verified initial 8 columns/24 cells, +4 to 12, insert to 13, delete to 12, and column numbering. After the step-range ordering fix, 8->16 produced step max/value 16, local circuit horizontal scrolling, no page overflow, and correct stats. Node tests passed 5/5.
+- Files: `index.html`, `src/circuit.js`, `src/styles.css`, `src/learning.css`, docs.
+- Result: Circuits can grow in time/depth up to a 64-column UI cap without expanding beyond the three-qubit learning scope.

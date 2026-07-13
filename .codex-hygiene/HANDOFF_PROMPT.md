@@ -42,6 +42,9 @@ Continue expanding the verified complex-amplitude three-qubit editor.
 - Manual start sliders clear the circuit-derived start and remain usable.
 - Editor buttons again update the upper Operation select, badge, and sphere;
   RX/RY/RZ and all six CNOT directions have exact select entries.
+- Three qubits are fixed; columns start at 8 and can add/insert/delete up to 64.
+- Browser verified 16-column step synchronization and local horizontal scroll
+  without page overflow.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched
