@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import { measurementProbabilities, sampleDistribution, filterDirection } from "../src/measurement.js";
+const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`),f=(theta=0,phi=0)=>({theta,phi});
+let p=measurementProbabilities([1,0,0,0,0,0,0,0],[f(),f(),f()]);close(p[0],1);
+p=measurementProbabilities([Math.SQRT1_2,0,0,0,Math.SQRT1_2,0,0,0],[f(90),f(),f()]);close(p[0],1);
+p=measurementProbabilities([1,0,0,0,0,0,0,0],[f(90),f(),f()]);close(p[0],.5);close(p[4],.5);
+p=measurementProbabilities([1,0,0,0,0,0,0,0],[f(90,90),f(),f()]);close(p[0],.5);close(p[4],.5);
+const plusI=[{re:Math.SQRT1_2,im:0},0,0,0,{re:0,im:Math.SQRT1_2},0,0,0];
+p=measurementProbabilities(plusI,[f(90,90),f(),f()]);close(p[0],1);close(p[4],0);
+assert.equal(filterDirection(f(90,270)),"フィルター方向：裏 |−i⟩");assert.deepEqual(sampleDistribution([1,0,0,0,0,0,0,0],10,()=>.7),[10,0,0,0,0,0,0,0]);console.log("measurement tests passed");

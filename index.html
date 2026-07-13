@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BlochCraft — 球体から学ぶ量子回路</title>
+  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="src/learning.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Move the sphere. Build the quantum world.</p>
+      <h1>BlochCraft</h1>
+      <p>球体を動かし、量子ゲートの軸・角度・条件を直感と標準用語の両方で学ぶ。</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel controls" aria-labelledby="lab-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Gate motion lab</p>
+          <h2 id="lab-title">全操作・球体ビューワー</h2>
+        </div>
+        <span id="gate-badge" class="badge"></span>
+      </div>
+
+      <label>操作
+        <select id="gate"></select>
+      </label>
+      <label>開始位置：表裏軸回転
+        <input id="start-y" type="range" min="0" max="360" step="5" value="0">
+        <output id="start-y-out">0°</output>
+      </label>
+      <label>開始位置：東西軸回転
+        <input id="start-x" type="range" min="0" max="360" step="5" value="0">
+        <output id="start-x-out">0°</output>
+      </label>
+      <label>操作の進み
+        <input id="progress" type="range" min="0" max="100" step="1" value="0">
+        <output id="progress-out">0%</output>
+      </label>
+      <div class="camera-help">地球儀をマウスで長押ししてドラッグ、または指でなぞると視点を自由回転できます。</div>
+
+      <label id="condition-row" class="condition-row">
+        <input id="condition" type="checkbox" checked>
+        条件を成立させる
+      </label>
+      <div id="condition-help" class="condition-help" hidden></div>
+
+      <div class="button-row">
+        <button id="play">▶ 動かす</button>
+        <button id="stop">■ 停止</button>
+        <button id="reset-view-controls">視点を戻す</button>
+      </div>
+      <div class="button-row directions" aria-label="開始位置プリセット">
+        <button data-preset="north">北 |0⟩</button><button data-preset="south">南 |1⟩</button>
+        <button data-preset="east">東 |+⟩</button><button data-preset="west">西 |−⟩</button>
+        <button data-preset="front">表 |+i⟩</button><button data-preset="back">裏 |−i⟩</button>
+      </div>
+    </section>
+
+    <section class="panel stage" aria-label="球体表示">
+      <div class="sphere-toolbar sphere-toolbar-end"><button id="reset-view">視点を戻す</button></div>
+      <svg id="globe" viewBox="-20 -35 800 650" role="img" aria-label="量子状態と回転軸"></svg>
+      <div id="facts" class="facts"></div>
+    </section>
+  </main>
+
+  <section class="circuit-shell" aria-labelledby="circuit-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Circuit composer</p><h2 id="circuit-title">3量子ビット回路エディター</h2></div>
+    </div>
+    <p class="circuit-help">部品を選び、A・B・Cのマスへ配置します。横線は量子ビットが左から右へ進む「量子ワイヤー」です。列を選ぶと、その操作が上の球体ビューワーへ同期します。</p>
+    <div id="circuit-tools" class="circuit-tools"></div>
+    <div id="circuit-tool-meaning" class="tool-meaning"></div>
+    <div class="circuit-grid-wrap"><div id="circuit-grid" class="circuit-grid"></div></div>
+    <div class="column-controls" aria-label="回路列の編集">
+      <div class="column-buttons">
+        <button id="column-add-one">+1列</button><button id="column-add-four">+4列</button>
+        <button id="column-insert-before">選択列の前に挿入</button><button id="column-insert-after">選択列の後に挿入</button>
+        <button id="column-delete">選択列を削除</button>
+      </div>
+      <output id="circuit-column-stats"></output>
+    </div>
+    <div class="step-row"><label>状態を見る位置 <input id="circuit-step" type="range" min="0" max="8" step="1" value="8"><output id="circuit-step-out">最後まで</output></label><p>途中の列を選ぶと、その時点の量子状態を下に表示します。回路自体は変更されません。</p></div>
+    <div class="circuit-results">
+      <div><h3>可能性の表</h3><div id="state-table"></div></div>
+      <div><h3>現在の操作</h3><div id="circuit-selection" class="selection-card">列をクリックしてください。</div><h3>単体状態</h3><div id="qubit-summary" class="qubit-summary"></div></div>
+    </div>
+  </section>
+
+  <section class="relationship-shell" aria-labelledby="relationship-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Relationship vault</p><h2 id="relationship-title">単体球と関係金庫</h2></div>
+      <span class="badge">回路の途中状態と同期</span>
+    </div>
+    <p class="circuit-help">白矢印の長さ＝その量子ビット単体で見える状態。短くなった分は消えたのではなく、その量子ビットと残り全体の関係へ移っています。色付き破線と数字0〜8は、回路開始時から各列を実行した後までの軌跡です。</p>
+    <div class="relationship-toolbar"><span>3球体をマウス長押しドラッグ／指ドラッグで同時に回転できます。</span><button id="relationship-reset-view">視点を戻す</button></div>
+    <svg id="relationship-view" viewBox="0 0 1080 430" width="100%" role="img" aria-label="A、B、Cの単体球と関係金庫"></svg>
+    <div id="relationship-cards" class="relationship-cards"></div>
+    <div class="relationship-caution">関係金庫は「AとBだけ」と決めつけず、A対残り全体・B対残り全体・C対残り全体として表示します。3つ子状態でも誤解しないための表現です。</div>
+  </section>
+
+  <section class="learning-shell" aria-labelledby="measurement-title">
+    <div class="section-heading"><div><p class="eyebrow">Measurement lab</p><h2 id="measurement-title">測定ラボ</h2></div><span class="badge">回路の途中状態と同期</span></div>
+    <p class="circuit-help">A・B・Cそれぞれのフィルター角度を360°から選びます。0°＝北、90°＝東、180°＝南、270°＝西、360°＝北です。正確な可能性と実際の測定結果を比べられます。</p>
+    <div class="filter-legend"><span class="state-key">白：現在の状態</span><span class="filter-key">朱色：フィルター方向（○側）</span></div>
+    <div class="filter-toolbar"><span>3球体をマウス長押しドラッグ／指ドラッグで同時に回転できます。</span><button id="filter-reset-view">視点を戻す</button></div>
+    <svg id="filter-view" viewBox="0 0 1080 390" width="100%" role="img" aria-label="A、B、Cの状態と測定フィルター方向"></svg>
+    <div id="measurement-bases" class="measurement-bases"></div>
+    <div class="button-row"><button id="measure-once">1回測定</button><button id="measure-many">1000回測定</button></div>
+    <div class="measurement-key"><code>0</code>＝○ 通る　／　<code>1</code>＝× 通らない</div>
+    <div class="measurement-results"><div><h3>正確な可能性</h3><div id="measurement-exact"></div></div><div><h3 id="measurement-sample-title">測定結果</h3><div id="measurement-samples" class="sample-empty">まだ測定していません。</div></div></div>
+  </section>
+  <section class="learning-shell" aria-labelledby="code-title">
+    <div class="section-heading"><div><p class="eyebrow">Code bridge</p><h2 id="code-title">回路からQiskitコードへ</h2></div><button id="copy-code">コードをコピー</button></div>
+    <p class="circuit-help">上の「状態を見る位置」までの回路と、測定方向がPython/Qiskitコードになります。</p>
+    <pre class="code-panel"><code id="qiskit-code"></code></pre>
+  </section>
+  <footer>BlochCraft v0.4 · MIT License · AwakeningOS</footer>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
