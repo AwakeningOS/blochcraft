@@ -12,3 +12,4 @@
 | BC-08 | Calm explanatory copy structure | abandoned | User rejected overall design | Removed from active app |
 | BC-09 | Three-qubit editor command audit | done_verified | `src/circuit.js` and `src/gates.js` inspected | Existing set was partial |
 | BC-10 | Complex amplitudes and standard single-qubit gates | done_verified | 5/5 tests; automated browser H/S/RX(35°) | Includes measurement, relationship, codegen propagation |
+| BC-11 | Synchronized rotation-angle controls | done_verified | Browser preset/slider/number/RZ/code check; 5/5 tests | −360°..360°, 1° step, 11 presets |

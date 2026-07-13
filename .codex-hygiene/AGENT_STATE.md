@@ -65,6 +65,10 @@ standard single-qubit gates.
   preserving six CNOT directions and Toffoli.
 - Browser automation verified 20 commands, RX(35°) placement, complex
   amplitude display, Bloch Y component, and matching Qiskit output.
+- Rotation editor now synchronizes a −360°..360° one-degree slider,
+  fine-grained number input, and 11 clickable representative angles.
+- Browser automation verified preset −90°, slider 137°, number −22°,
+  placed `RZ(−22°)`, and matching Qiskit output.
 
 ## Current Blockers
 
@@ -72,8 +76,8 @@ None.
 
 ## Next 1-3 Actions
 
-1. Run final expanded numerical tests and browser smoke validation.
-2. Commit and push the complex single-qubit gate expansion.
+1. Commit and push the synchronized rotation-angle editor.
+2. Let the user inspect the control layout.
 3. Next candidate: CZ/SWAP, then editor undo/move/copy operations.
 
 ## Last Updated

@@ -103,3 +103,11 @@
 - Evidence: Node tests passed for H/CNOT/GHZ, Y and S/S† phases, RX/RY/RZ, +i measurement, relationship Y component, Qiskit generation, and gate normalization. Browser automation placed H, S, RX(35°) and reported 20 commands, complex amplitudes, A Bloch `(X,Y,Z)=(0.00,0.82,0.57)`, and `qc.rx(35 * pi / 180, 0)`.
 - Files: `src/complex.js`, `src/circuit.js`, `src/relationship.js`, `src/measurement.js`, `src/codegen.js`, `src/gates.js`, tests and docs.
 - Result: Standard phase-sensitive single-qubit operations now propagate consistently across simulation, visualization, measurement, and generated code.
+
+## Evidence Entry
+
+- Time: 2026-07-13 JST
+- Action: Added synchronized rotation-angle controls for RX/RY/RZ.
+- Evidence: Browser automation reported range `{min:-360,max:360,step:1}`, 11 representative-angle buttons, preset −90° syncing number/slider/active state, slider 137° syncing number, number −22° syncing slider, placed label `RZ(−22°)`, and matching Qiskit code. Node tests passed 5/5.
+- Files: `src/circuit.js`, `src/learning.css`, docs.
+- Result: Learners can set coarse standard angles quickly or enter fine angles precisely without the controls drifting apart.

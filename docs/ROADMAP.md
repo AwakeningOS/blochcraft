@@ -17,6 +17,7 @@
 - [x] 複素振幅とBloch球Y成分
 - [x] X / Y / Z / H / S / S† / T / T†
 - [x] 角度入力式 RX / RY / RZ
+- [x] −360°〜360°スライダーと代表角プリセット
 - [ ] SWAPと逆回路
 
 ## v0.3 — Relationship View

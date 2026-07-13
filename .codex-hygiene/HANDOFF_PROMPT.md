@@ -33,6 +33,8 @@ Continue expanding the verified complex-amplitude three-qubit editor.
   CNOT pairs, one Toffoli, delete, and clear-all.
 - Browser automation verified H/S/RX(35°), complex amplitude display, Bloch Y,
   and matching Qiskit output.
+- RX/RY/RZ use synchronized number, −360°..360° slider, and 11 clickable
+  representative-angle controls; browser synchronization is verified.
 - Quest removal is verified by repository search; remaining tests pass 5/5.
 
 ## Files Touched
@@ -46,7 +48,7 @@ Validation and GitHub publication are complete. Draft PR #1 targets `main`:
 
 ## Next Actions
 
-1. Push the verified complex gate expansion.
+1. Push the synchronized rotation-angle controls.
 2. Add CZ/SWAP or editor undo/move/copy based on the user's choice.
 3. Do not restore Quest work unless explicitly requested.
 
